@@ -1,0 +1,13 @@
+.timer_container {
+  display: flex;
+  color: var(--light_color);
+}
+
+.timer_container .clock_icon i {
+  margin-right: 5px;
+}
+
+.timer_display {
+  margin-right: 5px;
+  color: var(--light_color);
+}

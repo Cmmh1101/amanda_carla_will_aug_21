@@ -1,0 +1,39 @@
+.header_bg {
+  background-color: var(--orange_color);
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
+
+.logo {
+  color: var(--dark_blue_color);
+  font-family: "Monoton", cursive;
+  font-size: 1.8rem;
+  letter-spacing: 1.3px;
+  transition: var(--transition);
+  margin-right: 0 !important;
+}
+
+.logo:hover {
+  letter-spacing: 1.5px;
+  color: var(--light_color);
+}
+
+.user_image {
+  width: 55px;
+  position: absolute;
+  z-index: 10;
+  top: 14px;
+  right: 5%;
+}
+.user_image img {
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .logo {
+    font-size: 1.5rem;
+    letter-spacing: 1.3px;
+    transition: var(--transition);
+  }
+}

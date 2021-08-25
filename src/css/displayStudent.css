@@ -1,0 +1,36 @@
+.student-display {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: wrap;
+  padding: 0;
+}
+
+.student_in_room {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 10px 20px;
+  margin-bottom: 0;
+  background-color: var(--dark_blue_color);
+  border-radius: 30px;
+  text-transform: capitalize;
+}
+
+.student_in_room p {
+  margin-bottom: 0;
+  margin: 5px 10px;
+  color: var(--light_color);
+}
+
+.student_in_room .remove-btn {
+  background-color: var(--orange_color) !important;
+  color: var(--dark_blue_color);
+  border-radius: 50%;
+  padding: 3px;
+  font-size: 10px;
+  top: 0;
+  right: 0;
+}

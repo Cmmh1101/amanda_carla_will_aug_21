@@ -1,0 +1,14 @@
+/* mx-auto d-flex justify-content-center flex-column text-center */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  height: 40px;
+}
+
+.add_btn {
+  background-color: green !important;
+}
