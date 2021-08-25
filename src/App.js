@@ -1,21 +1,18 @@
 import React, { Component } from "react";
-import { BrowserRouter } from "react-router-dom";
-import Main from "./components/MainComponent";
-import "./App.css";
-import "./css/roomComponent.css";
-import "./css/displayStudent.css";
-import "./css/formComponent.css";
-import "./css/timerComponent.css";
-import "./css/headerComponent.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./App.scss";
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div className="App">
-          <Main />
+          <h1>Welcome to our stater page</h1>
+          <p>
+            I created this repo to get us started and set up to start working!
+          </p>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
