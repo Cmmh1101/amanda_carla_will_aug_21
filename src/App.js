@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import Home from "./pages/homepage/HomePage";
 import "./app.scss";
-
-
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
-          <h1>Hello</h1>
+          <Home />
         </div>
       </Router>
     );
@@ -17,5 +16,3 @@ class App extends Component {
 }
 
 export default App;
-
-
