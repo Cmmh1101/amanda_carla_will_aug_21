@@ -30,6 +30,12 @@ const Hero = () => (
         </div>
       </div>
       <div className="hero_bg"></div>
+      <div className="jar_bg">
+        <img src="../images/glassjar.png" alt="" />
+      </div>
+      <div className="broken_jar_bg">
+        <img src="../images/brokenjar.png" alt="" />
+      </div>
     </Jumbotron>
   </>
 );

@@ -1,7 +1,7 @@
 .hero {
   padding: 0;
   color: $light_color;
-
+  background-color: transparent;
   width: 100%;
   height: 100vh;
   position: relative;
@@ -12,8 +12,8 @@
 
   .hero_bg {
     width: 100%;
-    height: 75vh;
-    transform: scale(1.5);
+    height: 60vh;
+    transform: scale(2);
     border-radius: 0 0 50% 50%;
     background-color: $dark_color;
     position: absolute !important;
@@ -49,6 +49,30 @@
     i {
       margin: 0 10px 0 0;
       font-weight: 600;
+    }
+  }
+  .jar_bg {
+    width: 80px;
+    height: 100px;
+    position: absolute;
+    bottom: 20%;
+    left: 20%;
+    transform: rotate(-25deg);
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .broken_jar_bg {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 20%;
+    right: 20%;
+
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 }
