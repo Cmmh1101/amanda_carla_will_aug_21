@@ -1,49 +1,26 @@
-# Room Manager Project: 
+# preservar By:
+## Carla Montano
+ - LinkedIn: https://www.linkedin.com/in/carla-montano/
+ - Github: https://github.com/cmmh1101
 
-A web app created to manage the flow of students that move to and from common areas in school settings to assist staff and students with the control of Covid-19 Regulations. 
+## Will Prouty:
+ - LinkedIn: https://www.linkedin.com/in/will-prouty-07882b93/
+ - Github: https://github.com/illfriday
 
-## Developer: 
+## Amanda Shuman
+ - LinkedIn: https://www.linkedin.com/in/amanda-shuman/
+ - Github: https://github.com/AmandaShuman 
 
-Carla Montano
-  - LinkedIn: https://www.linkedin.com/in/carla-montano/ 
+## Some of the Technologies Used:
+-
 
-## Overview of Technologies:
+## Check out our live project at:
+-
 
-  - ReactJS
-    - React-router-dom
-    - React Hooks
-    - React Animation Components
-  - Bootstrap 4 
-    - ReactStrap
-  - Netlify
-  - API (in development)
+### We want you to have a great experience playing our Quadruple war game, should you have any feedback feel free to contact us.
 
-## Objective: 
-
-  - Follow Covid-19 regulations for shared spaces at school settings in a controlled and secured web application allowing users to see areas of a building and the students sent to those areas. 
-
-## Specifications: 
-
-  - Login (Front-End only)
-  - Display of rooms in the building that need to control num of people to meet Covid-19 regulation
-  - Each room has a form that will allow filtering students names (from data base in future update) to make the process faster.
-  - The list will be displayed in each room along with a timer to know how long has that student been out of the classroom.
-  - Remove student from that room (list) once he/she has returned.
-
-## Development stage: 
-
-  - The project is in inicial stage 
-  - Hard coded while the API is being developed
-  - Continuous updates as of Aug. 20/21 
-
-## Project Preview
-
-Here you can see two students asigned to different rooms that have independent timers running, also each student has the delete button to remove that student from the display once the student has returned.  
-
-![screencapture-room-management-netlify-app-home-2021-08-20-19_38_08](https://user-images.githubusercontent.com/56605042/130303075-de1495ac-b150-4f94-b355-536611d15ad9.png)
-![screencapture-room-management-netlify-app-home-2021-08-20-19_43_24](https://user-images.githubusercontent.com/56605042/130303076-67d6774f-9f4d-4d8f-97c5-c8cac062c5c1.png)
-
-
-
+## Matching game involving Spanish vocabulary
+## Objective
+It's time to brush up on your Spanish vocabulary! Spanish words in jars will fall from the sky. Your mission is to match the word with the correct emoji. Be careful, though! If the jar reaches the bottom of the screen and has not been matched, the jar will be smashed on the ground and the preserves will be wasted! Can you save them all? If you smash 5 jars, the game is over and you'll have to try again.
 
 
