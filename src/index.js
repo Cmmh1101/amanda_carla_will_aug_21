@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.css";
 import "./index.scss";
-import "./app.scss";
 import "typeface-poppins";
 import "typeface-monoton";
 
