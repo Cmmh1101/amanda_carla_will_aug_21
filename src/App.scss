@@ -1,6 +1,9 @@
 @import "colors";
 @import "/src/pages/homepage/homepage";
 @import "/src/pages/gamepage/gamepage";
+@import "/src/components/navigation/navigation";
+@import "/src/components/hero/hero";
+@import "/src/components/footer/footer";
 
 
 * {
@@ -17,6 +20,7 @@ h4,
 h5,
 h6,
 p,
-span {
+span, a {
   font-family: "Poppins", sans-serif;
+  letter-spacing: 1.5px;
 }
