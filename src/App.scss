@@ -1,17 +1,14 @@
+@import "colors";
+@import "/src/pages/homepage/homepage";
+@import "/src/pages/gamepage/gamepage";
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-$orange_color: #f37c0d;
-$light_color: #f1f1f1;
-$light-blue_color: #6fafea;
-$blue_color: #3162c1;
-$dark_blue_color: #102346;
-$light-grey_color: #939090;
-$dark_color: #000;
-$transition: all 0.8s ease-in-out;
 
 h1,
 h2,
@@ -23,9 +20,3 @@ p,
 span {
   font-family: "Poppins", sans-serif;
 }
-
-h1 {
-  color: $blue_color;
-}
-
-
