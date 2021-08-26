@@ -1,49 +1,40 @@
-# Room Manager Project: 
+# preservar By:
+## Carla Montano
+ - LinkedIn: https://www.linkedin.com/in/carla-montano/
+ - Github: https://github.com/cmmh1101
 
-A web app created to manage the flow of students that move to and from common areas in school settings to assist staff and students with the control of Covid-19 Regulations. 
+## Will Prouty:
+ - LinkedIn: https://www.linkedin.com/in/will-prouty-07882b93/
+ - Github: https://github.com/illfriday
 
-## Developer: 
+## Amanda Shuman
+ - LinkedIn: https://www.linkedin.com/in/amanda-shuman/
+ - Github: https://github.com/AmandaShuman 
 
-Carla Montano
-  - LinkedIn: https://www.linkedin.com/in/carla-montano/ 
+## Some of the Technologies Used:
+-
 
-## Overview of Technologies:
+## Check out our live project at:
+-
 
-  - ReactJS
-    - React-router-dom
-    - React Hooks
-    - React Animation Components
-  - Bootstrap 4 
-    - ReactStrap
-  - Netlify
-  - API (in development)
+### We want you to have a great experience playing our preservar game. Should you have any feedback feel free to contact us.
 
-## Objective: 
+## Matching game involving Spanish vocabulary
+## Objective
+It's time to brush up on your Spanish vocabulary! Spanish words in jars will fall from the sky. Your mission is to match the word with the correct emoji. Be careful, though! If the jar reaches the bottom of the screen and has not been matched, the jar will be smashed on the ground and the preserves will be wasted! Can you save them all? If you smash 5 jars, the game is over and you'll have to try again.
 
-  - Follow Covid-19 regulations for shared spaces at school settings in a controlled and secured web application allowing users to see areas of a building and the students sent to those areas. 
+### Game play
+ - You will have approximately 10 seconds to match a jar name with its appropriate emoji before it hits the ground and smashes. 
+ - There will be more than one jar on the screen. New jars will appear intermittently so work quickly to match the jar name with it's appropriate emoji before it smashes.
+ - Jars will gently land on the bottom of the screen if matched with their proper emoji. 
+ - You can match any of the jars on the screen with its appropriate emoji. Just be sure to match the jars before they break on the floor.
+ - Careful! If a jar makes it to the bottom of the screen without being matched OR you click on an emoji that doesn't have a matching word on the screen, then that counts as one smashed jar.
+    - You can smash up to 5 jars. Once the 5th jar is smashed, the game is over.
+ - Thats' all you need to know for now. Have fun! Can you reach a new high score?
 
-## Specifications: 
-
-  - Login (Front-End only)
-  - Display of rooms in the building that need to control num of people to meet Covid-19 regulation
-  - Each room has a form that will allow filtering students names (from data base in future update) to make the process faster.
-  - The list will be displayed in each room along with a timer to know how long has that student been out of the classroom.
-  - Remove student from that room (list) once he/she has returned.
-
-## Development stage: 
-
-  - The project is in inicial stage 
-  - Hard coded while the API is being developed
-  - Continuous updates as of Aug. 20/21 
-
-## Project Preview
-
-Here you can see two students asigned to different rooms that have independent timers running, also each student has the delete button to remove that student from the display once the student has returned.  
-
-![screencapture-room-management-netlify-app-home-2021-08-20-19_38_08](https://user-images.githubusercontent.com/56605042/130303075-de1495ac-b150-4f94-b355-536611d15ad9.png)
-![screencapture-room-management-netlify-app-home-2021-08-20-19_43_24](https://user-images.githubusercontent.com/56605042/130303076-67d6774f-9f4d-4d8f-97c5-c8cac062c5c1.png)
-
-
-
-
-
+### Advanced details
+- You will receive up to 20 points for each correct jar guessed. The quicker you match the emoji to the word jar, the more points you get.
+- Guess a full row of jars and the row will get you a bonus. You get a bonus of 50 points for each row stacked.
+    - Careful! If you break a jar, that row is ruined and you'll have to wait until the next row to attempt to clear a row.
+    - As more rows are formed, you'll have less room (and less time) to match the jar word with its emoji. Once a row is formed, that becomes the new floor level where jars will break.
+- How long can you last? The time it takes for a jar to fall will increase 5 times during play. You'll get a 20 point bonus for each new level you make.
