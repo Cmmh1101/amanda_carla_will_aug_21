@@ -31,4 +31,8 @@ It's time to brush up on your Spanish vocabulary! Spanish words in jars will fal
  - You can smash up to 5 jars. Once the 5th jar is smashed, the game is over.
  - Thats' all you need to know for now. Have fun! Can you reach a new high score?
 
-### 
+### Advanced details
+- You will receive 20 points for each correct jar guessed - 30 jars in total!
+- Guess a full row of jars and the row will disappear. You get a bonus of 50 points for each row cleared.
+  - Careful! If you break a jar, that row is ruined and you'll have to wait until the next row to attempt to clear a row.
+- How long can you last? The timer will increase 5 times during play. You'll get a 20 point bonus for each new level you make.
