@@ -72,7 +72,6 @@ class App extends Component {
             <br/>
             <span role="img" aria-label="oyster">🦪</span>
             El Ostion
-            El Limon
             <br/>
             <span role="img" aria-label="coconut">🥥</span>
             El Coco
