@@ -8,7 +8,7 @@ function Emojis() {
       <h3>La Palabra</h3>
       <CurrentAnswer />
       <h3>El Emoji Correcto</h3>
-      <span role="image" aria-label="current  correct emoji"></span>
+      <span role="image" aria-label="current correct emoji"></span>
     </>
   );
 }
