@@ -18,22 +18,28 @@ export default class CurrentAnswer extends Component {
     if (Number(i) === this.state.random) console.log("verdad");
     console.log("mierda");
   }
-  //EMOJIS are randomized by utility/ShuffleArray.js
+
   generateAnswers() {
+// INITIALIZE empty 'answers' ARRAY
     const answers = [];
+//for() LOOP generates 4 X RANDOM #'S
     for (let i = 0; i < 4; i++) {
       let num = Math.floor(Math.random() * EMOJIS.length);
+//generate a RANDOM# from 0-30(EMOJIS.length)...)
       if (answers.includes(num) || num === this.state.random) {
-        // console.log("or cond Met", num);
+//IF the 'answers' ARRAY includes the RANDOM# sorted in this.state.random OR a RANDOM# already included in the 'answers' ARRAY, RE-ITERATE the for() LOOP
+// console.log("or cond Met", num);
         i--;
         continue;
       } else {
+//ELSE, RANDOM# is unique, add RANDOM# to 'answers' ARRAY
         answers.push(num);
       }
     }
     answers.push(this.state.random);
 
     console.log("OG", answers);
+//EMOJIS are randomized by utility/ShuffleArray.js
     ShuffleArray(answers);
     console.log("Shuf", answers);
     return answers.map((i) => (
