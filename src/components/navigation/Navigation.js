@@ -30,12 +30,12 @@ const Navigation = () => {
             </NavItem>
             <NavItem tag="li">
               <NavLink tag="a" to="/ourteam">
-                Out Team
+                Our Team
               </NavLink>
             </NavItem>
             <NavItem tag="li">
-                <NavLink to="/contact">Contact Us</NavLink>
-              </NavItem>
+              <NavLink to="/contact">Contact Us</NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </div>
