@@ -7,43 +7,55 @@ export default class CurrentAnswer extends Component {
     super(props);
 
     this.state = {
+      //INITIALIZING the random PROPERTY of the STATE as a RANDOM# from 1-30
       random: Math.floor(Math.random() * EMOJIS.length),
+      guessed: [],
     };
     this.generateAnswers = this.generateAnswers.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
   }
 
-  checkAnswer(i) {
-    console.log(i);
-    if (Number(i) === this.state.random) console.log("verdad");
-    console.log("mierda");
+  checkAnswer(event) {
+    console.log(event);
+    const clickedEmoji = event.target.innerText;
+    const correctEmoji = EMOJIS[this.state.random].emoji;
+    console.log(clickedEmoji, correctEmoji);
+    if (clickedEmoji === correctEmoji) {
+      console.log('Correct');
+      //push the INDEX# to guessed
+    } else {
+      alert('Try Again')
+    }
+    // console.log(clickedEmoji === correctEmoji ? "verdad" : "mierda");
   }
 
   generateAnswers() {
-// INITIALIZE empty 'answers' ARRAY
+    // INITIALIZE empty 'answers' ARRAY
     const answers = [];
-//for() LOOP generates 4 X RANDOM #'S
+    //for() LOOP generates 4 X RANDOM #'S
     for (let i = 0; i < 4; i++) {
       let num = Math.floor(Math.random() * EMOJIS.length);
-//generate a RANDOM# from 0-30(EMOJIS.length)...)
+      //generate a RANDOM# from 0-30(EMOJIS.length)...)
       if (answers.includes(num) || num === this.state.random) {
-//IF the 'answers' ARRAY includes the RANDOM# sorted in this.state.random OR a RANDOM# already included in the 'answers' ARRAY, RE-ITERATE the for() LOOP
-// console.log("or cond Met", num);
+        //IF the 'answers' ARRAY includes the RANDOM# assigned to this.state.random OR a RANDOM# already included in the 'answers' ARRAY, RE-ITERATE the for() LOOP(i--)
+        // console.log("or cond Met", num);
         i--;
         continue;
       } else {
-//ELSE, RANDOM# is unique, add RANDOM# to 'answers' ARRAY
+        //ELSE, IF RANDOM# is unique, add RANDOM# to 'answers' ARRAY
         answers.push(num);
       }
     }
     answers.push(this.state.random);
 
     console.log("OG", answers);
-//EMOJIS are randomized by utility/ShuffleArray.js
+    //EMOJIS are randomized by utility/ShuffleArray.js
     ShuffleArray(answers);
     console.log("Shuf", answers);
     return answers.map((i) => (
-      <button onClick={this.checkAnswer}>{EMOJIS[i].emoji} </button>
+      <button value={i} onClick={this.checkAnswer}>
+        {EMOJIS[i].emoji}{" "}
+      </button>
     ));
   }
 
