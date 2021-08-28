@@ -1,19 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
 import { EMOJIS } from "../shared/emojis";
 
-export default function CurrentAnswer() {
-  // const num = () => Math.floor(Math.random() * 31);
-  const findEmoji = () => {
-    const num = () => Math.floor(Math.random() * 31);
+export default class CurrentAnswer extends Component {
+  constructor(props) {
+    super(props);
 
-    return EMOJIS.filter((em) => em.id === num())[0];
-  };
-  const { spanish, emoji } = findEmoji();
-  // console.log(currentEmoji);
-  return (
-    <>
-      <p>{emoji}</p>
-      <p>{spanish}</p>
-    </>
-  );
+    this.state = {
+      random: Math.floor(Math.random() * 30 + 1),
+    };
+  }
+
+  // componentDidMount() {
+  //   this.setState(
+  //     {
+  //       random: Math.floor(Math.random() * 30 + 1),
+  //       // random: 3,
+  //     },
+  //     () => console.log(" setStatedidMount", this.state.random)
+  //   );
+  //   // console.log(this.state.random);
+  // }
+
+  render() {
+    // const answer = () => EMOJIS.filter((em) => em.id === this.state.random)[0];
+    console.log("WHAT");
+    console.log("Render", this.state.random);
+    return (
+      <>
+        <h3>El Emoji Correcto</h3>
+        <p>{EMOJIS[this.state.random].spanish}</p>
+        <h3>La Palabra</h3>
+        <p>{EMOJIS[this.state.random].emoji}</p>
+      </>
+    );
+  }
 }
