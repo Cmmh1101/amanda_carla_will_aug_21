@@ -164,7 +164,7 @@ export const EMOJIS = [
   {
     id: 28,
     english: "Bell Pepper",
-    spanish: "El Pimiento",
+    spanish: "El Pimenton",
     emoji: "🫑",
   },
   {

@@ -11,6 +11,7 @@ export default class CurrentAnswer extends Component {
     };
     this.generateAnswers = this.generateAnswers.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
+    // this.getNewAnswer = this.getNewAnswer.bind(this);
   }
 
   checkAnswer(i) {
@@ -42,14 +43,22 @@ export default class CurrentAnswer extends Component {
   }
 
   render() {
-    console.log("Correcto", this.state.random);
+    // console.log("Correcto", this.state.random);
 
     return (
       <>
+        <button onClick={this.refreshPage}>Restart</button>
+        <h3>Puntaje</h3>
+        <p>{this.state.score}</p>
+        <h3>Las Palabras Restante</h3>
+        <p>{this.state.remainingWords}</p>
+        <h3>Las Vidas</h3>
+        <p>{this.state.lives}</p>
         <h3>La Palabra</h3>
         <p>{EMOJIS[this.state.random].spanish}</p>
-        <h3>El Emoji Correcto</h3>
-        <p>{EMOJIS[this.state.random].emoji}</p>
+        {/* <h3>El Emoji Correcto</h3>
+        <p>{EMOJIS[this.state.random].emoji}</p> */}
+
         <h3>Los Opciones</h3>
         {this.generateAnswers()}
       </>
