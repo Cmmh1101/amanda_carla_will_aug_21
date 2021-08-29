@@ -24,7 +24,7 @@ const Team = () => {
               <CardImg
                 top
                 width="100%"
-                src="/images/amandacircle.png"
+                src="/images/amandacircle2.png"
                 alt="Card image cap"
               />
               <CardBody className="member-card">
