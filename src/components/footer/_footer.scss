@@ -1,8 +1,14 @@
 .footer {
-    color: $light_color;
-    background-color: $dark_color;
-    text-align: center;
-    .footer_text {
-        padding: 10px 0;
+  color: $light_color;
+  background-color: $dark_color;
+  text-align: center;
+  .footer_btns {
+    height: auto;
+    .buttons {
+      margin: 3rem 0;
     }
+  }
+  .footer_text {
+    padding: 10px 0;
+  }
 }

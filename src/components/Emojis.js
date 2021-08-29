@@ -6,7 +6,7 @@ function Emojis() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col">
+          <div className="col play_title">
             <h1>Let's Play!</h1>
             <GameArea />
           </div>
