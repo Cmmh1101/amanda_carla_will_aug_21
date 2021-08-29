@@ -21,20 +21,6 @@ export default class GameArea extends Component {
     // this.getNewAnswer = this.getNewAnswer.bind(this);
   }
 
-  checkAnswer(event) {
-    console.log(event);
-    const clickedEmoji = event.target.innerText;
-    const correctEmoji = EMOJIS[this.state.random].emoji;
-    console.log(clickedEmoji, correctEmoji);
-    if (clickedEmoji === correctEmoji) {
-      console.log("Correct");
-      //push the INDEX# to guessed
-    } else {
-      alert("Try Again");
-    }
-    // console.log(clickedEmoji === correctEmoji ? "verdad" : "mierda");
-  }
-
   refreshPage = () => {
     window.location.reload(true);
   };
@@ -58,12 +44,12 @@ export default class GameArea extends Component {
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
       console.log("Correct");
-      let newScore = Number(this.state.score);
-      let newWordCount = Number(this.state.remainingWords);
+      // let newScore = Number(this.state.score);
+      // let newWordCount = Number(this.state.remainingWords);
       this.setState({
-        score: (newScore += 20),
+        score: (this.state.score += 20),
         guessed: this.state.guessed.concat(this.state.random),
-        remainingWords: (newWordCount -= 1),
+        remainingWords: (this.state.remainingWords -= 1),
       });
       if (this.state.remainingWords === 0) {
         alert(
@@ -79,9 +65,9 @@ export default class GameArea extends Component {
         this.state.guessed
       );
     } else {
-      let newLives = Number(this.state.lives);
+      // let newLives = Number(this.state.lives);
       this.setState({
-        lives: (newLives -= 1),
+        lives: (this.state.lives -= 1),
       });
       if (this.state.lives > 0) {
         alert(
