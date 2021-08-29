@@ -1,0 +1,100 @@
+.layout_section {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .about {
+    text-align: center;
+    z-index: 5;
+    margin: 4rem 0;  
+  }
+  .kitchen_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      background-color: #ffffffef;
+      z-index: 2;
+    }
+  }
+  .rounded_bg {
+    width: 100%;
+    height: 60vh;
+    transform: scale(2);
+    border-radius: 0 0 50% 50%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+}
+
+.rules_section {
+  width:100%;
+  height: auto;
+  min-height: 100vh;
+  background-color: $dark_color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  color: $light_color;
+    .rules_container {
+      margin: 4rem 0;
+      .rule_icon {
+        margin-right: 5px;
+      }
+    }
+}
+
+.team_section {
+  width:100%;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  .cards {
+    border: none;
+    .member-card {
+      padding: 20px 0; 
+      text-align: center;
+    }
+
+
+    .icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      i{
+        font-size: 4rem;
+  transition: all 0.3s ease-in-out;
+  color: $light_blue_color;
+  &:hover{
+    transform: scale(1.1);
+  color: $dark_color;
+  }
+      }
+    }
+  }
+  }
+  
+}

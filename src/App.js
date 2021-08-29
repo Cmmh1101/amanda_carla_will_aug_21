@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 import Home from "./pages/homepage/HomePage";
 import Navigation from "./components/navigation/Navigation";
-import Emojis from "./components/Emojis";
+import GamePage from "./pages/gamepage/GamePage";
+import Footer from "./components/footer/Footer";
 import "./App.scss";
 
 class App extends Component {
@@ -18,9 +19,10 @@ class App extends Component {
           <Navigation />
           <Switch>
             <Route exact path="/homepage" component={Home} />
-            <Route exact path="/emojis" component={Emojis} />
+            <Route exact path="/gamepage" component={GamePage} />
             <Redirect to="/homepage" />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

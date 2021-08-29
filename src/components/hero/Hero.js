@@ -21,7 +21,7 @@ const Hero = () => (
                 The best plate to have FUN while testing your Spanish skills!
               </p>
 
-              <Link to="/play">
+              <Link to="/gamepage">
                 <i className="fa fa-hand-o-right" />
                 Play
               </Link>

@@ -26,7 +26,7 @@ const Navigation = () => {
               <NavLink to="/">Home</NavLink>
             </NavItem>
             <NavItem tag="li">
-              <NavLink to="/features">Features</NavLink>
+              <NavLink to="/gamepage">Play</NavLink>
             </NavItem>
             <NavItem tag="li">
               <NavLink tag="a" to="/ourteam">
