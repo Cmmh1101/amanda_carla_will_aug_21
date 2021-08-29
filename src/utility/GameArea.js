@@ -59,10 +59,12 @@ export default class GameArea extends Component {
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
       console.log("Correct");
+      let newScore = [...this.state.score];
+      let newWordCount = [...this.state.remainingWords];
       this.setState({
-        score: (this.state.score += 20),
+        score: (newScore += 20),
         guessed: this.state.guessed.concat(this.state.random),
-        remainingWords: (this.state.remainingWords -= 1),
+        remainingWords: (newWordCount -= 1),
       });
       if (this.state.remainingWords === 0) {
         alert(
@@ -78,8 +80,9 @@ export default class GameArea extends Component {
         this.state.guessed
       );
     } else {
+      let newLives = [...this.state.lives];
       this.setState({
-        lives: (this.state.lives -= 1),
+        lives: (newLives -= 1),
       });
       if (this.state.lives > 0) {
         alert(
