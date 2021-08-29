@@ -3,6 +3,7 @@ import { EMOJIS } from "../shared/emojis";
 import ShuffleArray from "./ShuffleArray";
 import { Button } from "reactstrap";
 import { Fade } from "react-animation-components";
+import { Streak } from "./Streak";
 
 const refreshPage = () => {
   window.location.reload(true);
@@ -20,12 +21,8 @@ const GameArea = () => {
     //REASSIGN NEW RANDOM#(MUST NOT BE IN guessed[])
     let num = Math.floor(Math.random() * EMOJIS.length);
     if (guessed.includes(num) === true) {
-      console.log("repeats?", num)
-      console.log("guessed", guessed)
       getNewAnswer();
     } else {
-      console.log("repeats/n?", num)
-      console.log("guessed/n", guessed)
       setRandom(num)
     }
   };
@@ -141,6 +138,7 @@ const GameArea = () => {
         {/* Game Execussion */}
 
         <div className="play">
+          <Streak streak={streak} />
           <Fade in>
             <p className="word_in_play active">
               {EMOJIS[random].spanish}
