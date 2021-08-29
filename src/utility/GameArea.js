@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { EMOJIS } from "../shared/emojis";
 import ShuffleArray from "./ShuffleArray";
 
-export default class CurrentAnswer extends Component {
+export default class GameArea extends Component {
   constructor(props) {
     super(props);
 
