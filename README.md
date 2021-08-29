@@ -24,17 +24,16 @@
 It's time to brush up on your Spanish vocabulary! Spanish words in jars will fall from the sky. Your mission is to match the word with the correct emoji. Be careful, though! If the jar reaches the bottom of the screen and has not been matched, the jar will be smashed on the ground and the preserves will be wasted! Can you save them all? If you smash 5 jars, the game is over and you'll have to try again.
 
 ### Game play
- - You will have approximately 10 seconds to match a jar name with its appropriate emoji before it hits the ground and smashes. 
- - There will be more than one jar on the screen. New jars will appear intermittently so work quickly to match the jar name with it's appropriate emoji before it smashes.
- - Jars will gently land on the bottom of the screen if matched with their proper emoji. 
+ - ***You will have approximately 10 seconds to match a jar name with its appropriate emoji before it hits the ground and smashes. 
+ - ***There will be more than one jar on the screen. 
+ - ***New jars will appear intermittently so work quickly to match the jar name with it's appropriate emoji before it smashes.
+ - ***Jars will gently land on the bottom of the screen if matched with their proper emoji. 
  - You can match any of the jars on the screen with its appropriate emoji. Just be sure to match the jars before they break on the floor.
- - Careful! If a jar makes it to the bottom of the screen without being matched OR you click on an emoji that doesn't have a matching word on the screen, then that counts as one smashed jar.
+ - ***Careful! If a jar makes it to the bottom of the screen without being matched OR you click on an emoji that doesn't have a matching word on the screen, then that counts as one smashed jar.
     - You can smash up to 5 jars. Once the 5th jar is smashed, the game is over.
  - Thats' all you need to know for now. Have fun! Can you reach a new high score?
 
 ### Advanced details
 - You will receive up to 20 points for each correct jar guessed. The quicker you match the emoji to the word jar, the more points you get.
-- Guess a full row of jars and the row will get you a bonus. You get a bonus of 50 points for each row stacked.
-    - Careful! If you break a jar, that row is ruined and you'll have to wait until the next row to attempt to clear a row.
-    - As more rows are formed, you'll have less room (and less time) to match the jar word with its emoji. Once a row is formed, that becomes the new floor level where jars will break.
-- How long can you last? The time it takes for a jar to fall will increase 5 times during play. You'll get a 20 point bonus for each new level you make.
+- Bonus points for streaks are available! Get more answers correct in a row for bigger bonuses!
+- ***How long can you last? The time it takes for a jar to fall will increase 5 times during play. You'll get a 20 point bonus for each new level you make.

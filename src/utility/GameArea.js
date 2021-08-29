@@ -48,17 +48,18 @@ export default class GameArea extends Component {
       // let newScore = Number(this.state.score);
       // let newWordCount = Number(this.state.remainingWords);
       this.setState({
-        score: (this.state.score += 20),
+        score: (this.state.score + 20),
         guessed: this.state.guessed.concat(this.state.random),
-        remainingWords: (this.state.remainingWords -= 1),
-        streak: (this.state.streak += 1)
+        remainingWords: (this.state.remainingWords - 1),
+        streak: (this.state.streak + 1)
       });
+      console.log("streak", this.state.streak)
       if (this.state.streak >= 3) {
         var streakPoints = 10 * this.state.streak
         this.setState({
           score: this.state.score + streakPoints
         });
-        console.log("Streak score", this.state.score);
+        console.log("Streak score", streakPoints);
       }
       if (this.state.remainingWords === 0) {
         alert(
@@ -76,7 +77,7 @@ export default class GameArea extends Component {
     } else {
       // let newLives = Number(this.state.lives);
       this.setState({
-        lives: (this.state.lives -= 1),
+        lives: (this.state.lives - 1),
         streak: 0
       });
       if (this.state.lives > 0) {
