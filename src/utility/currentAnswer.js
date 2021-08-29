@@ -7,25 +7,23 @@ export default class CurrentAnswer extends Component {
     super(props);
 
     this.state = {
-
       //INITIALIZING the random PROPERTY of the STATE as a RANDOM# from 1-30 RIGHT ANSWER
       random: Math.floor(Math.random() * EMOJIS.length),
       guessed: [],
       score: 0,
       remainingWords: 30,
       lives: 5,
-
     };
     this.generateAnswers = this.generateAnswers.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     // this.getNewAnswer = this.getNewAnswer.bind(this);
   }
 
-
   checkAnswer(i) {
     console.log(i);
     if (Number(i) === this.state.random) console.log("verdad");
     console.log("mierda");
+  }
 
   refreshPage = () => {
     window.location.reload(true);
@@ -43,7 +41,7 @@ export default class CurrentAnswer extends Component {
     }
   };
 
-  checkAnswer(event) {
+  checkAnswer = (event) => {
     // console.log(event);
     const clickedEmoji = event.target.innerText;
     const correctEmoji = EMOJIS[this.state.random].emoji;
@@ -81,12 +79,11 @@ export default class CurrentAnswer extends Component {
         // window.location.reload(true);
       }
     }
-  }
-    // console.log(clickedEmoji === correctEmoji ? "verdad" : "mierda");
+  };
+  // console.log(clickedEmoji === correctEmoji ? "verdad" : "mierda");
 
-  }
   //EMOJIS are randomized by utility/ShuffleArray.js
-  generateAnswers() {
+  generateAnswers = () => {
     const answers = [];
 
     //for() LOOP generates 4 X RANDOM #'S WRONG ANSWERS
@@ -102,7 +99,7 @@ export default class CurrentAnswer extends Component {
       }
     }
     answers.push(this.state.random);
-    
+
     // console.log("OG", answers);
     ShuffleArray(answers);
     console.log("Shuf", answers);
@@ -110,16 +107,13 @@ export default class CurrentAnswer extends Component {
     if (this.state.remainingWords === 0 || this.state.lives === 0) {
       return <></>;
     } else {
-      return (answers.map((i) => (
+      return answers.map((i) => (
         <button key={i} onClick={this.checkAnswer}>
           {EMOJIS[i].emoji}{" "}
-        </ button >
-      )));
+        </button>
+      ));
     }
-
-  
-}
-
+  };
 
   render() {
     // console.log("Correcto", this.state.random);
