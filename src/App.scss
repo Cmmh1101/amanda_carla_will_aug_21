@@ -4,7 +4,7 @@
 @import "/src/components/navigation/navigation";
 @import "/src/components/hero/hero";
 @import "/src/components/footer/footer";
-@import "/src/components/layout/layout";
+@import "/src/components/homepage/layout";
 
 
 * {
@@ -26,4 +26,32 @@ span, a {
   letter-spacing: 1.5px;
   font-weight: 300;
 }
+
+h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+  i {
+    margin-right: 10px;
+    transform: rotate(15deg);
+  }
+}
+    p {
+      margin-bottom: 2rem;
+    }
+
+.buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        margin: 0 20px;
+        background-color: $blue_color;
+        padding: 10px 20px;
+        color: $light_color;
+        &:hover {
+          color: $light_color;
+          text-decoration: none;
+        }
+      }
+    }
 

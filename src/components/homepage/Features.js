@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 const Features = () => {
   return (
     <>
-      
+      <div className="container">
+          <div className="row">
             <div className="col-10 mx-auto about">
               <h2>
                 <i class="fa fa-beer" aria-hidden="true" />
@@ -27,6 +28,9 @@ const Features = () => {
                 <Link to="/">See Demo</Link>
               </div>
             </div>
+          </div>
+        </div>
+            
         
      
     </>
