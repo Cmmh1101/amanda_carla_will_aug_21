@@ -53,6 +53,13 @@ export default class GameArea extends Component {
         remainingWords: (this.state.remainingWords -= 1),
         streak: (this.state.streak += 1)
       });
+      if (this.state.streak >= 3) {
+        var streakPoints = 10 * this.state.streak
+        this.setState({
+          score: this.state.score + streakPoints
+        });
+        console.log("Streak score", this.state.score);
+      }
       if (this.state.remainingWords === 0) {
         alert(
           `Congratulations! You Won. Your top score is ${this.state.score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
