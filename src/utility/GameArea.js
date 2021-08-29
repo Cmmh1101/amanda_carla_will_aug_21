@@ -10,7 +10,9 @@ const refreshPage = () => {
 };
 
 const GameArea = () => {
-  const [random, setRandom] = useState(Math.floor(Math.random() * EMOJIS.length));
+  const [random, setRandom] = useState(
+    Math.floor(Math.random() * EMOJIS.length)
+  );
   const [guessed, setGuessed] = useState([]);
   const [score, setScore] = useState(0);
   const [remainingWords, setRemainingWords] = useState(30);
@@ -23,7 +25,7 @@ const GameArea = () => {
     if (guessed.includes(num) === true) {
       getNewAnswer();
     } else {
-      setRandom(num)
+      setRandom(num);
     }
   };
 
@@ -36,16 +38,16 @@ const GameArea = () => {
       console.log("Correct");
       // let newScore = Number(this.state.score);
       // let newWordCount = Number(this.state.remainingWords);
-      setScore(prevState => prevState + 20);
-      setGuessed(prevState => [...prevState, random]);
-      setRemainingWords(prevState => prevState - 1);
-      setStreak(prevState => prevState + 1);
+      setScore((prevState) => prevState + 20);
+      setGuessed((prevState) => [...prevState, random]);
+      setRemainingWords((prevState) => prevState - 1);
+      setStreak((prevState) => prevState + 1);
       getNewAnswer();
 
-      console.log("streak", streak)
+      console.log("streak", streak);
       if (streak >= 3) {
-        const streakPoints = 10 * streak
-        setScore(prevState => prevState + streakPoints);
+        const streakPoints = 10 * streak;
+        setScore((prevState) => prevState + streakPoints);
         console.log("Streak score", streakPoints);
       }
       if (remainingWords === 0) {
@@ -55,25 +57,17 @@ const GameArea = () => {
       }
     } else {
       // let newLives = Number(this.state.lives);
-      setLives(prevState => prevState - 1);
+      setLives((prevState) => prevState - 1);
       setStreak(0);
       if (lives > 0) {
-        alert(
-          `You lost 1 Life.\nYou have ${lives} lives remaining.`
-        );
+        alert(`You lost 1 Life.\nYou have ${lives} lives remaining.`);
       } else {
         alert("Game Over. Press 'Restart' to play again.");
         // window.location.reload(true);
       }
     }
-
   };
-  console.log(
-    "New Score",
-    score,
-    "\nGuessed inside check ans:",
-    guessed
-  );
+  console.log("New Score", score, "\nGuessed inside check ans:", guessed);
   // console.log(clickedEmoji === correctEmoji ? "verdad" : "mierda");
 
   //EMOJIS are randomized by utility/ShuffleArray.js
@@ -155,11 +149,7 @@ const GameArea = () => {
           <h3>Los Opciones</h3>
           <GenerateAnswers />
         </div>
-        <img
-          className="game_area_img"
-          src="../images/basekitchen.png"
-          alt=""
-        />
+        <img className="game_area_img" src="../images/basekitchen.png" alt="" />
       </div>
 
       {/* <button onClick={this.refreshPage}>Restart</button> */}
@@ -178,6 +168,6 @@ const GameArea = () => {
       {/* {this.generateAnswers()} */}
     </>
   );
-}
+};
 
-export default GameArea
+export default GameArea;

@@ -7,6 +7,7 @@ import "font-awesome/css/font-awesome.css";
 import "./index.scss";
 import "typeface-poppins";
 import "typeface-monoton";
+import "typeface-architects-daughter";
 
 ReactDOM.render(
   <React.StrictMode>

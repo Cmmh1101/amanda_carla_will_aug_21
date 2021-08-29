@@ -13535,6 +13535,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-architects-daughter@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/typeface-architects-daughter/-/typeface-architects-daughter-1.1.13.tgz#abd80dbbdefec2785b99877a87a4379d289c5a25"
+  integrity sha512-+kY2cF4SbQJYgaMJNmJ/4f/TDNNgAFXwFSteS+bIKVfisWgAdWnNbBQenqYa1AZkZZMY18VwjXxwfkQus5kODg==
+
 typeface-monoton@^1.1.13:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/typeface-monoton/-/typeface-monoton-1.1.13.tgz#8bc16dcdda08a0cfe023935bd8d74f62bf8db160"
