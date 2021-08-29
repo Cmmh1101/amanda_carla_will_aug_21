@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { EMOJIS } from "../shared/emojis";
-import ShuffleArray from "./ShuffleArray";
+import { GenerateAnswers } from "./GenerateAnswers";
 import { Button } from "reactstrap";
 import { Fade } from "react-animation-components";
 import { Streak } from "./Streak";
@@ -23,8 +23,10 @@ const GameArea = () => {
     //REASSIGN NEW RANDOM#(MUST NOT BE IN guessed[])
     let num = Math.floor(Math.random() * EMOJIS.length);
     if (guessed.includes(num) === true) {
+      // console.log("repeats", num, "\nguessed", guessed);
       getNewAnswer();
     } else {
+      // console.log(" no repeat", num, "\nguessed", guessed);
       setRandom(num);
     }
   };
@@ -71,37 +73,7 @@ const GameArea = () => {
   // console.log(clickedEmoji === correctEmoji ? "verdad" : "mierda");
 
   //EMOJIS are randomized by utility/ShuffleArray.js
-  const GenerateAnswers = () => {
-    const answers = [];
 
-    //for() LOOP generates 4 X RANDOM #'S WRONG ANSWERS
-
-    for (let i = 0; i < 4; i++) {
-      let num = Math.floor(Math.random() * EMOJIS.length);
-      if (answers.includes(num) || num === random) {
-        // console.log("or cond Met", num);
-        i--;
-        continue;
-      } else {
-        answers.push(num);
-      }
-    }
-    answers.push(random);
-
-    // console.log("OG", answers);
-    ShuffleArray(answers);
-    // console.log("Shuf", answers);
-
-    if (remainingWords === 0 || lives === 0) {
-      return <></>;
-    } else {
-      return answers.map((i) => (
-        <button className="emojis" key={i} onClick={checkAnswer}>
-          {EMOJIS[i].emoji}{" "}
-        </button>
-      ));
-    }
-  };
   // console.log("Correcto", this.state.random);
 
   return (
@@ -147,7 +119,12 @@ const GameArea = () => {
 
         <div className="answer_options">
           <h3>Los Opciones</h3>
-          <GenerateAnswers />
+          <GenerateAnswers
+            lives={lives}
+            words={remainingWords}
+            random={random}
+            checkAnswer={checkAnswer}
+          />
         </div>
         <img className="game_area_img" src="../images/basekitchen.png" alt="" />
       </div>
