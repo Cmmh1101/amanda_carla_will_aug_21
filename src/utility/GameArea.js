@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { EMOJIS } from "../shared/emojis";
 import ShuffleArray from "./ShuffleArray";
 import { Button } from "reactstrap";
-import { Fade} from 'react-animation-components';
-
+import { Fade } from "react-animation-components";
 
 export default class GameArea extends Component {
   constructor(props) {
@@ -59,8 +58,8 @@ export default class GameArea extends Component {
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
       console.log("Correct");
-      let newScore = [...this.state.score];
-      let newWordCount = [...this.state.remainingWords];
+      let newScore = Number(this.state.score);
+      let newWordCount = Number(this.state.remainingWords);
       this.setState({
         score: (newScore += 20),
         guessed: this.state.guessed.concat(this.state.random),
@@ -80,7 +79,7 @@ export default class GameArea extends Component {
         this.state.guessed
       );
     } else {
-      let newLives = [...this.state.lives];
+      let newLives = Number(this.state.lives);
       this.setState({
         lives: (newLives -= 1),
       });
@@ -156,23 +155,31 @@ export default class GameArea extends Component {
               <hr />
               <span>{this.state.lives}</span>
             </div>
-            
-            
           </div>
           {/* Game Execussion */}
-          
+
           <div className="play">
             <Fade in>
-            <p className="word_in_play active">{EMOJIS[this.state.random].spanish}<img className="word-jar" src="../images/glassjar.png" alt="jar" /></p>
-            
+              <p className="word_in_play active">
+                {EMOJIS[this.state.random].spanish}
+                <img
+                  className="word-jar"
+                  src="../images/glassjar.png"
+                  alt="jar"
+                />
+              </p>
             </Fade>
           </div>
-          
+
           <div className="answer_options">
             <h3>Los Opciones</h3>
             {this.generateAnswers()}
           </div>
-          <img className="game_area_img" src="../images/basekitchen.png" alt=""/>
+          <img
+            className="game_area_img"
+            src="../images/basekitchen.png"
+            alt=""
+          />
         </div>
 
         {/* <button onClick={this.refreshPage}>Restart</button> */}
