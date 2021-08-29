@@ -15,6 +15,7 @@ export default class GameArea extends Component {
       score: 0,
       remainingWords: 30,
       lives: 5,
+      streak: 0
     };
     this.generateAnswers = this.generateAnswers.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
@@ -47,10 +48,19 @@ export default class GameArea extends Component {
       // let newScore = Number(this.state.score);
       // let newWordCount = Number(this.state.remainingWords);
       this.setState({
-        score: (this.state.score += 20),
+        score: (this.state.score + 20),
         guessed: this.state.guessed.concat(this.state.random),
-        remainingWords: (this.state.remainingWords -= 1),
+        remainingWords: (this.state.remainingWords - 1),
+        streak: (this.state.streak + 1)
       });
+      console.log("streak", this.state.streak)
+      if (this.state.streak >= 3) {
+        var streakPoints = 10 * this.state.streak
+        this.setState({
+          score: this.state.score + streakPoints
+        });
+        console.log("Streak score", streakPoints);
+      }
       if (this.state.remainingWords === 0) {
         alert(
           `Congratulations! You Won. Your top score is ${this.state.score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
@@ -67,7 +77,8 @@ export default class GameArea extends Component {
     } else {
       // let newLives = Number(this.state.lives);
       this.setState({
-        lives: (this.state.lives -= 1),
+        lives: (this.state.lives - 1),
+        streak: 0
       });
       if (this.state.lives > 0) {
         alert(
