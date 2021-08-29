@@ -15,6 +15,7 @@ export default class GameArea extends Component {
       score: 0,
       remainingWords: 30,
       lives: 5,
+      streak: 0
     };
     this.generateAnswers = this.generateAnswers.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
@@ -50,6 +51,7 @@ export default class GameArea extends Component {
         score: (this.state.score += 20),
         guessed: this.state.guessed.concat(this.state.random),
         remainingWords: (this.state.remainingWords -= 1),
+        streak: (this.state.streak += 1)
       });
       if (this.state.remainingWords === 0) {
         alert(
@@ -68,6 +70,7 @@ export default class GameArea extends Component {
       // let newLives = Number(this.state.lives);
       this.setState({
         lives: (this.state.lives -= 1),
+        streak: 0
       });
       if (this.state.lives > 0) {
         alert(
