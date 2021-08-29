@@ -9,7 +9,7 @@ const refreshPage = () => {
 };
 
 const GameArea = () => {
-  const [random, setRandom] = useState(0);
+  const [random, setRandom] = useState(Math.floor(Math.random() * EMOJIS.length));
   const [guessed, setGuessed] = useState([]);
   const [score, setScore] = useState(0);
   const [remainingWords, setRemainingWords] = useState(30);
@@ -19,9 +19,13 @@ const GameArea = () => {
   const getNewAnswer = () => {
     //REASSIGN NEW RANDOM#(MUST NOT BE IN guessed[])
     let num = Math.floor(Math.random() * EMOJIS.length);
-    if (guessed.includes(num)) {
+    if (guessed.includes(num) === true) {
+      console.log("repeats?", num)
+      console.log("guessed", guessed)
       getNewAnswer();
     } else {
+      console.log("repeats/n?", num)
+      console.log("guessed/n", guessed)
       setRandom(num)
     }
   };
@@ -39,6 +43,7 @@ const GameArea = () => {
       setGuessed(prevState => [...prevState, random]);
       setRemainingWords(prevState => prevState - 1);
       setStreak(prevState => prevState + 1);
+      getNewAnswer();
 
       console.log("streak", streak)
       if (streak >= 3) {
@@ -50,9 +55,7 @@ const GameArea = () => {
         alert(
           `Congratulations! You Won. Your top score is ${score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
         );
-        // window.location.reload(true);
       }
-      getNewAnswer();
     } else {
       // let newLives = Number(this.state.lives);
       setLives(prevState => prevState - 1);
@@ -66,11 +69,12 @@ const GameArea = () => {
         // window.location.reload(true);
       }
     }
+
   };
   console.log(
     "New Score",
     score,
-    "\nGuessed:",
+    "\nGuessed inside check ans:",
     guessed
   );
   // console.log(clickedEmoji === correctEmoji ? "verdad" : "mierda");
@@ -95,7 +99,7 @@ const GameArea = () => {
 
     // console.log("OG", answers);
     ShuffleArray(answers);
-    console.log("Shuf", answers);
+    // console.log("Shuf", answers);
 
     if (remainingWords === 0 || lives === 0) {
       return <></>;
