@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { EMOJIS } from "../shared/emojis";
 import ShuffleArray from "./ShuffleArray";
+import { Button } from "reactstrap";
+import { Fade} from 'react-animation-components';
+
 
 export default class GameArea extends Component {
   constructor(props) {
@@ -116,7 +119,7 @@ export default class GameArea extends Component {
       return <></>;
     } else {
       return answers.map((i) => (
-        <button key={i} onClick={this.checkAnswer}>
+        <button className="emojis" key={i} onClick={this.checkAnswer}>
           {EMOJIS[i].emoji}{" "}
         </button>
       ));
@@ -128,20 +131,61 @@ export default class GameArea extends Component {
 
     return (
       <>
-        <button onClick={this.refreshPage}>Restart</button>
-        <h3>Puntaje</h3>
-        <p>{this.state.score}</p>
-        <h3>Las Palabras Restante</h3>
-        <p>{this.state.remainingWords}</p>
-        <h3>Las Vidas</h3>
-        <p>{this.state.lives}</p>
-        <h3>La Palabra</h3>
-        <p>{EMOJIS[this.state.random].spanish}</p>
+        <div className="col-md-8 game-area">
+          <div className="play_restart_btns">
+            <Button className="btn-block" onClick={this.refreshPage}>
+              Restart
+            </Button>
+          </div>
+          <div className="board">
+            <div className="col-4 board_item">
+              <h6>Points</h6>
+              <hr />
+              <span>{this.state.score}</span>
+            </div>
+            <div className="col-4 board_item">
+              <h6>Words</h6>
+              <hr />
+              <span>{this.state.remainingWords}</span>
+            </div>
+            <div className="col-4 board_item">
+              <h6>Lives</h6>
+              <hr />
+              <span>{this.state.lives}</span>
+            </div>
+            
+            
+          </div>
+          {/* Game Execussion */}
+          
+          <div className="play">
+            <Fade in>
+            <p className="word_in_play active">{EMOJIS[this.state.random].spanish}<img className="word-jar" src="../images/glassjar.png" alt="jar" /></p>
+            
+            </Fade>
+          </div>
+          
+          <div className="answer_options">
+            <h3>Los Opciones</h3>
+            {this.generateAnswers()}
+          </div>
+          <img className="game_area_img" src="../images/basekitchen.png" alt=""/>
+        </div>
+
+        {/* <button onClick={this.refreshPage}>Restart</button> */}
+        {/* <h3>Puntaje</h3> */}
+        {/* <p>{this.state.score}</p> */}
+        {/* <h3>Las Palabras Restante</h3> */}
+        {/* <p>{this.state.remainingWords}</p> */}
+        {/* <h3>Las Vidas</h3> */}
+        {/* <p>{this.state.lives}</p> */}
+        {/* <h3>La Palabra</h3> */}
+        {/* <p>{EMOJIS[this.state.random].spanish}</p> */}
         {/* <h3>El Emoji Correcto</h3>
         <p>{EMOJIS[this.state.random].emoji}</p> */}
 
-        <h3>Los Opciones</h3>
-        {this.generateAnswers()}
+        {/* <h3>Los Opciones</h3> */}
+        {/* {this.generateAnswers()} */}
       </>
     );
   }
