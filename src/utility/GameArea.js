@@ -65,7 +65,7 @@ const GameArea = () => {
       setLives((prevState) => prevState - 1);
       setStreak(0);
       if (lives > 0) {
-        alert(`You lost 1 Life.\nYou have ${lives} lives remaining.`);
+        alert(`You lost 1 Life.\nYou have ${lives - 1} lives remaining.`);
       } else {
         alert("Game Over. Press 'Restart' to play again.");
       }
