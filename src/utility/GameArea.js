@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { Fade } from "react-animation-components";
-/***************TIMER DISABLED *************** */
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { EMOJIS } from "../shared/emojis";
 import Jars from "../components/jars/Jars";
 import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
+
+
 
 const GameArea = () => {
   const [random, setRandom] = useState(
@@ -19,12 +20,12 @@ const GameArea = () => {
   const [lives, setLives] = useState(5);
   const [streak, setStreak] = useState(0);
   const [language, setLanguage] = useState("spanish");
-  /***************TIMER DISABLED *************** */
   const [key, setKey] = useState(20);
 
-  /***************TIMER DISABLED *************** */
+  /********** TIMER IN GAME COMPONENT **************/
   const RenderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
+      /*These need to be put into a parent function */
       setKey(prevKey => prevKey + 1);
       getNewAnswer();
       setLives(lives - 1);
@@ -34,7 +35,6 @@ const GameArea = () => {
       }
       return <div className="timer">Too late...Lose 1 life</div>;
     }
-
     return (
       <div className="timer">
         <div className="value">
@@ -83,7 +83,6 @@ const GameArea = () => {
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
-      //***************TIMER DISABLED *************** */
       setKey(prevKey => prevKey + 1);
       console.log("Correct");
       setScore((prevState) => prevState + 20);
@@ -152,15 +151,14 @@ const GameArea = () => {
             <span>{lives}</span>
           </div>
         </div>
-        {/* Game Execution */}
 
+        {/* Game Execution */}
         <div className="play">
           <div className="col-2">
             <Streak streak={streak} />
           </div>
           <div className="col-6">
             <Fade in>
-              {/* ***************TIMER DISABLED *************** * */}
               <CountdownCircleTimer
                 key = {key}
                 isPlaying
