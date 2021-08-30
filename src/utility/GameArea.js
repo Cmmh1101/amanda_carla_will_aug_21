@@ -20,19 +20,22 @@ const GameArea = () => {
   const [lives, setLives] = useState(5);
   const [streak, setStreak] = useState(0);
   const [language, setLanguage] = useState("spanish");
-  const [key, setKey] = useState(20);
+  const [key, setKey] = useState(0);
 
   /********** TIMER IN GAME COMPONENT **************/
   const RenderTime = ({ remainingTime }) => {
+    if (lives < 1) {
+      return (
+        <div>
+          <p>"Game Over. <br/>Press Restart to play again."</p>
+        </div>
+      );
+    }
     if (remainingTime === 0) {
       /*These need to be put into a parent function */
       setKey(prevKey => prevKey + 1);
       getNewAnswer();
       setLives(lives - 1);
-      if (lives < 1) {
-        alert("Game Over. Press 'OK' to play again.");
-        RefreshPage();
-      }
       return <div className="timer">Too late...Lose 1 life</div>;
     }
     return (
