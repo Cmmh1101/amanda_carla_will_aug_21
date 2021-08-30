@@ -1,4 +1,7 @@
 # THIS BRANCH IS FOR TIMER DEVELOPMENT
+## this is the [sandbox example](https://codesandbox.io/s/tender-bogdan-qd35m?file=/src/index.js:246-294) I'm using. This example does display a message when time expires, I can't make it work.
+these are the  props available
+these are the docs
 
 # preservar By:
 ## Carla Montano
