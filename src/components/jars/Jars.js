@@ -3,7 +3,7 @@ import React from "react";
 const RenderJars = (props) => {
   for (let i = 0; i < props.count; i++) {
     console.log(`Jar#: ${i}`);
-    return <img className="new-jar" src={"/images/glassjar.png"} />;
+    return <img className="new-jar" src={"/images/glassjar.png"} alt = "glass jar" />;
   }
 };
 

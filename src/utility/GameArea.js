@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { Fade } from "react-animation-components";
-//***************TIMER DISABLED *************** */
-// import { CountdownCircleTimer } from "react-countdown-circle-timer";
+/***************TIMER DISABLED *************** */
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { EMOJIS } from "../shared/emojis";
 import Jars from "../components/jars/Jars";
 import { GenerateAnswers } from "./GenerateAnswers";
@@ -19,32 +19,31 @@ const GameArea = () => {
   const [lives, setLives] = useState(5);
   const [streak, setStreak] = useState(0);
   const [language, setLanguage] = useState("spanish");
-  //***************TIMER DISABLED *************** */
-  // const [key, setKey] = useState(0);
+  /***************TIMER DISABLED *************** */
+  const [key, setKey] = useState(20);
 
-  //***************TIMER DISABLED *************** */
-  // const RenderTime = ({ remainingTime }) => {
-  //   if (remainingTime === 0) {
-  //     setKey((prevKey) => prevKey + 1);
-  //     // getNewAnswer();
-  //     // GenerateAnswers();
-  //     setLives(lives - 1);
-  //     if (lives < 1) {
-  //       alert("Game Over. Press 'OK' to play again.");
-  //       RefreshPage();
-  //     }
-  //     return <div className="timer">Too late...Lose 1 life</div>;
-  //   }
+  /***************TIMER DISABLED *************** */
+  const RenderTime = ({ remainingTime }) => {
+    if (remainingTime === 0) {
+      setKey(20);
+      // getNewAnswer();
+      // GenerateAnswers();
+      setLives(lives - 1);
+      if (lives < 1) {
+        alert("Game Over. Press 'OK' to play again.");
+        RefreshPage();
+      }
+      return <div className="timer">Too late...Lose 1 life</div>;
+    }
 
-  //   return (
-  //     <div className="timer">
-  //       <div className="text">Remaining</div>
-  //       <div className="value">{remainingTime}</div>
-  //       <div className="text">seconds</div>
-  //     </div>
-  //   );
-  // };
+    return (
+      <div className="timer">
+        <div className="value"></div>
+      </div>
+    );
+  };
 
+  /****** TOGGLE LANGUAGE BETWEEN ENGLISH AND SPANISH ********* */
   const ChangeLanguage = () => {
     setLanguage(language === "spanish" ? "english" : "spanish");
     setRandom(Math.floor(Math.random() * EMOJIS.length));
@@ -54,25 +53,27 @@ const GameArea = () => {
     setStreak(0);
   };
 
+  /*******REASSIGN NEW RANDOM#(MUST NOT BE IN guessed[])*****/
   const getNewAnswer = () => {
-    //REASSIGN NEW RANDOM#(MUST NOT BE IN guessed[])
+    // This is NOT currently working the way we want it to!
     let num = Math.floor(Math.random() * EMOJIS.length);
     if (guessed.includes(num) === true) {
-      // console.log("repeats", num, "\nguessed", guessed);
+      console.log("repeats", num, "\nguessed", guessed);
       getNewAnswer();
     } else {
-      // console.log(" no repeat", num, "\nguessed", guessed);
+      console.log(" no repeat", num, "\nguessed", guessed);
       setRandom(num);
     }
   };
 
+  /****** CHECK IF PICTURE CLICKED MATCHES WORD ON SCREEN *******/
   const checkAnswer = (event) => {
     const clickedEmoji = event.target.innerText;
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
       //***************TIMER DISABLED *************** */
-      // setKey((prevKey) => prevKey + 1);
+      setKey(20);
       console.log("Correct");
       setScore((prevState) => prevState + 20);
       setGuessed((prevState) => [...prevState, random]);
@@ -81,18 +82,21 @@ const GameArea = () => {
       setStreak((prevState) => prevState + 1);
       getNewAnswer();
 
+      /***** GIVE BONUS POINTS FOR WINNING STREAKS *******/
       console.log("streak", streak);
       if (streak >= 3) {
         const streakPoints = 10 * streak;
         setScore((prevState) => prevState + streakPoints);
         console.log("Streak score", streakPoints);
       }
+      /****** END GAME IF USER RUNS OUT OF WORDS ******/
       if (remainingWords === 0) {
         alert(
           `Congratulations! You Won. Your top score is ${score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
         );
       }
     } else {
+      /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
       setLives((prevState) => prevState - 1);
       setStreak(0);
       if (lives >= 1) {
@@ -116,9 +120,8 @@ const GameArea = () => {
             Restart
           </Button>
           <Button className="btn-block" onClick={ChangeLanguage}>
-            {`Change Language to ${
-              language === "spanish" ? "English" : "Spanish"
-            }`}
+            {`Change Language to ${language === "spanish" ? "English" : "Spanish"
+              }`}
           </Button>
         </div>
         <div className="board">
@@ -141,36 +144,35 @@ const GameArea = () => {
         {/* Game Execution */}
 
         <div className="play">
-          <Streak streak={streak} />
-          <Fade in>
-            <p className="word_in_play active">
-              {language === "spanish"
-                ? EMOJIS[random].spanish
-                : EMOJIS[random].english}
-              <img
-                className="word-jar"
-                src="../images/glassjar.png"
-                alt="jar"
-              />
-            </p>
-
-            {/* 
-  ***************TIMER DISABLED *************** *
-            
-            <div className="timer-wrapper">
+          <div className="col-2">
+            <Streak streak={streak} />
+          </div>
+          <div className="col-6">
+            <Fade in>
+              {/* ***************TIMER DISABLED *************** * */}
               <CountdownCircleTimer
-                key={key}
                 isPlaying
-                size={120}
-                duration={20}
+                size={250}
+                duration={key}
                 colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
                 onComplete={() => [true, 5000]}
               >
-                {RenderTime}
+                <p className="word_in_play active">
+                  {language === "spanish"
+                    ? EMOJIS[random].spanish
+                    : EMOJIS[random].english}
+                  <img
+                    className="word-jar"
+                    src="../images/glassjar.png"
+                    alt="jar"
+                  />
+                </p>
               </CountdownCircleTimer>
-            </div> */}
+            </Fade>
+          </div>
+          <div className="col">
             <Jars count={guessed.length} />
-          </Fade>
+          </div>
         </div>
 
         <div className="answer_options">
