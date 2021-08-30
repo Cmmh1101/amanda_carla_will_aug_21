@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { EMOJIS } from "../shared/emojis";
-import { GenerateAnswers } from "./GenerateAnswers";
 import { Button } from "reactstrap";
 import { Fade } from "react-animation-components";
+import { EMOJIS } from "../shared/emojis";
+import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
-
-const refreshPage = () => {
-  window.location.reload(true);
-};
+import { RefreshPage } from "./RefreshPage";
 
 const GameArea = () => {
   const [random, setRandom] = useState(
@@ -15,9 +12,19 @@ const GameArea = () => {
   );
   const [guessed, setGuessed] = useState([]);
   const [score, setScore] = useState(0);
-  const [remainingWords, setRemainingWords] = useState(30);
+  const [remainingWords, setRemainingWords] = useState(EMOJIS.length);
   const [lives, setLives] = useState(5);
   const [streak, setStreak] = useState(0);
+  const [language, setLanguage] = useState("spanish");
+
+  const ChangeLanguage = () => {
+    setLanguage(language === "spanish" ? "english" : "spanish");
+    setRandom(Math.floor(Math.random() * EMOJIS.length));
+    setScore(0);
+    setRemainingWords(EMOJIS.length);
+    setLives(5);
+    setStreak(0);
+  };
 
   const getNewAnswer = () => {
     //REASSIGN NEW RANDOM#(MUST NOT BE IN guessed[])
@@ -32,14 +39,11 @@ const GameArea = () => {
   };
 
   const checkAnswer = (event) => {
-    // console.log(event);
     const clickedEmoji = event.target.innerText;
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
       console.log("Correct");
-      // let newScore = Number(this.state.score);
-      // let newWordCount = Number(this.state.remainingWords);
       setScore((prevState) => prevState + 20);
       setGuessed((prevState) => [...prevState, random]);
       setRemainingWords((prevState) => prevState - 1);
@@ -58,19 +62,16 @@ const GameArea = () => {
         );
       }
     } else {
-      // let newLives = Number(this.state.lives);
       setLives((prevState) => prevState - 1);
       setStreak(0);
       if (lives > 0) {
         alert(`You lost 1 Life.\nYou have ${lives} lives remaining.`);
       } else {
         alert("Game Over. Press 'Restart' to play again.");
-        // window.location.reload(true);
       }
     }
   };
   console.log("New Score", score, "\nGuessed inside check ans:", guessed);
-  // console.log(clickedEmoji === correctEmoji ? "verdad" : "mierda");
 
   //EMOJIS are randomized by utility/ShuffleArray.js
 
@@ -80,8 +81,13 @@ const GameArea = () => {
     <>
       <div className="col-md-8 game-area">
         <div className="play_restart_btns">
-          <Button className="btn-block" onClick={refreshPage}>
+          <Button className="btn-block" onClick={RefreshPage}>
             Restart
+          </Button>
+          <Button className="btn-block" onClick={ChangeLanguage}>
+            {`Change Language to ${
+              language === "spanish" ? "English" : "Spanish"
+            }`}
           </Button>
         </div>
         <div className="board">
@@ -101,13 +107,15 @@ const GameArea = () => {
             <span>{lives}</span>
           </div>
         </div>
-        {/* Game Execussion */}
+        {/* Game Execution */}
 
         <div className="play">
           <Streak streak={streak} />
           <Fade in>
             <p className="word_in_play active">
-              {EMOJIS[random].spanish}
+              {language === "spanish"
+                ? EMOJIS[random].spanish
+                : EMOJIS[random].english}
               <img
                 className="word-jar"
                 src="../images/glassjar.png"
@@ -128,21 +136,6 @@ const GameArea = () => {
         </div>
         <img className="game_area_img" src="../images/basekitchen.png" alt="" />
       </div>
-
-      {/* <button onClick={this.refreshPage}>Restart</button> */}
-      {/* <h3>Puntaje</h3> */}
-      {/* <p>{this.state.score}</p> */}
-      {/* <h3>Las Palabras Restante</h3> */}
-      {/* <p>{this.state.remainingWords}</p> */}
-      {/* <h3>Las Vidas</h3> */}
-      {/* <p>{this.state.lives}</p> */}
-      {/* <h3>La Palabra</h3> */}
-      {/* <p>{EMOJIS[this.state.random].spanish}</p> */}
-      {/* <h3>El Emoji Correcto</h3>
-        <p>{EMOJIS[this.state.random].emoji}</p> */}
-
-      {/* <h3>Los Opciones</h3> */}
-      {/* {this.generateAnswers()} */}
     </>
   );
 };

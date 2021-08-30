@@ -18,7 +18,7 @@ const Hero = () => (
             >
               <h1>Welcome to The Jar Game</h1>
               <p>
-                The best plate to have FUN while testing your Spanish skills!
+                The best place to have FUN while testing your Spanish skills!
               </p>
 
               <Link to="/gamepage">
