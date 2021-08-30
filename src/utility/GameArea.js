@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { Fade } from "react-animation-components";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { EMOJIS } from "../shared/emojis";
 import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
@@ -16,6 +17,29 @@ const GameArea = () => {
   const [lives, setLives] = useState(5);
   const [streak, setStreak] = useState(0);
   const [language, setLanguage] = useState("spanish");
+  const [key, setKey] = useState(0);
+
+  const RenderTime = ({ remainingTime }) => {
+    if (remainingTime === 0) {
+      setKey((prevKey) => prevKey + 1);
+      // getNewAnswer();
+      // GenerateAnswers();
+      setLives(lives - 1);
+      if (lives < 1) {
+        alert("Game Over. Press 'OK' to play again.");
+        RefreshPage();
+      }
+      return <div className="timer">Too late...Lose 1 life</div>;
+    }
+
+    return (
+      <div className="timer">
+        <div className="text">Remaining</div>
+        <div className="value">{remainingTime}</div>
+        <div className="text">seconds</div>
+      </div>
+    );
+  };
 
   const ChangeLanguage = () => {
     setLanguage(language === "spanish" ? "english" : "spanish");
@@ -43,6 +67,7 @@ const GameArea = () => {
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
+      setKey((prevKey) => prevKey + 1);
       console.log("Correct");
       setScore((prevState) => prevState + 20);
       setGuessed((prevState) => [...prevState, random]);
@@ -64,7 +89,7 @@ const GameArea = () => {
     } else {
       setLives((prevState) => prevState - 1);
       setStreak(0);
-      if (lives > 0) {
+      if (lives >= 1) {
         alert(`You lost 1 Life.\nYou have ${lives} lives remaining.`);
       } else {
         alert("Game Over. Press 'Restart' to play again.");
@@ -122,6 +147,18 @@ const GameArea = () => {
                 alt="jar"
               />
             </p>
+            <div className="timer-wrapper">
+              <CountdownCircleTimer
+                key={key}
+                isPlaying
+                size={120}
+                duration={20}
+                colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+                onComplete={() => [true, 5000]}
+              >
+                {RenderTime}
+              </CountdownCircleTimer>
+            </div>
           </Fade>
         </div>
 
