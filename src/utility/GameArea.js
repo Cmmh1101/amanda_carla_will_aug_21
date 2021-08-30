@@ -111,6 +111,7 @@ const GameArea = () => {
       }
     } else {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
+      setKey(prevKey => prevKey + 1);
       setLives((prevState) => prevState - 1);
       setStreak(0);
       if (lives >= 1) {
