@@ -25,9 +25,8 @@ const GameArea = () => {
   /***************TIMER DISABLED *************** */
   const RenderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
-      setKey(20);
-      // getNewAnswer();
-      // GenerateAnswers();
+      setKey(prevKey => prevKey + 1);
+      getNewAnswer();
       setLives(lives - 1);
       if (lives < 1) {
         alert("Game Over. Press 'OK' to play again.");
@@ -38,7 +37,18 @@ const GameArea = () => {
 
     return (
       <div className="timer">
-        <div className="value"></div>
+        <div className="value">
+          <p className="word_in_play active">
+            {language === "spanish"
+              ? EMOJIS[random].spanish
+              : EMOJIS[random].english}
+            <img
+              className="word-jar"
+              src="../images/glassjar.png"
+              alt="jar"
+            />
+          </p>
+        </div>
       </div>
     );
   };
@@ -51,6 +61,7 @@ const GameArea = () => {
     setRemainingWords(EMOJIS.length);
     setLives(5);
     setStreak(0);
+    setKey(prevKey => prevKey + 1);
   };
 
   /*******REASSIGN NEW RANDOM#(MUST NOT BE IN guessed[])*****/
@@ -73,7 +84,7 @@ const GameArea = () => {
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
       //***************TIMER DISABLED *************** */
-      setKey(20);
+      setKey(prevKey => prevKey + 1);
       console.log("Correct");
       setScore((prevState) => prevState + 20);
       setGuessed((prevState) => [...prevState, random]);
@@ -151,22 +162,14 @@ const GameArea = () => {
             <Fade in>
               {/* ***************TIMER DISABLED *************** * */}
               <CountdownCircleTimer
+                key = {key}
                 isPlaying
                 size={250}
-                duration={key}
+                duration={5}
                 colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
                 onComplete={() => [true, 5000]}
               >
-                <p className="word_in_play active">
-                  {language === "spanish"
-                    ? EMOJIS[random].spanish
-                    : EMOJIS[random].english}
-                  <img
-                    className="word-jar"
-                    src="../images/glassjar.png"
-                    alt="jar"
-                  />
-                </p>
+                {RenderTime} 
               </CountdownCircleTimer>
             </Fade>
           </div>
