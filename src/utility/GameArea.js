@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { Fade } from "react-animation-components";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
+//***************TIMER DISABLED *************** */
+// import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { EMOJIS } from "../shared/emojis";
+import Jars from "../components/jars/Jars";
 import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
@@ -17,29 +19,31 @@ const GameArea = () => {
   const [lives, setLives] = useState(5);
   const [streak, setStreak] = useState(0);
   const [language, setLanguage] = useState("spanish");
-  const [key, setKey] = useState(0);
+  //***************TIMER DISABLED *************** */
+  // const [key, setKey] = useState(0);
 
-  const RenderTime = ({ remainingTime }) => {
-    if (remainingTime === 0) {
-      setKey((prevKey) => prevKey + 1);
-      // getNewAnswer();
-      // GenerateAnswers();
-      setLives(lives - 1);
-      if (lives < 1) {
-        alert("Game Over. Press 'OK' to play again.");
-        RefreshPage();
-      }
-      return <div className="timer">Too late...Lose 1 life</div>;
-    }
+  //***************TIMER DISABLED *************** */
+  // const RenderTime = ({ remainingTime }) => {
+  //   if (remainingTime === 0) {
+  //     setKey((prevKey) => prevKey + 1);
+  //     // getNewAnswer();
+  //     // GenerateAnswers();
+  //     setLives(lives - 1);
+  //     if (lives < 1) {
+  //       alert("Game Over. Press 'OK' to play again.");
+  //       RefreshPage();
+  //     }
+  //     return <div className="timer">Too late...Lose 1 life</div>;
+  //   }
 
-    return (
-      <div className="timer">
-        <div className="text">Remaining</div>
-        <div className="value">{remainingTime}</div>
-        <div className="text">seconds</div>
-      </div>
-    );
-  };
+  //   return (
+  //     <div className="timer">
+  //       <div className="text">Remaining</div>
+  //       <div className="value">{remainingTime}</div>
+  //       <div className="text">seconds</div>
+  //     </div>
+  //   );
+  // };
 
   const ChangeLanguage = () => {
     setLanguage(language === "spanish" ? "english" : "spanish");
@@ -67,10 +71,12 @@ const GameArea = () => {
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
-      setKey((prevKey) => prevKey + 1);
+      //***************TIMER DISABLED *************** */
+      // setKey((prevKey) => prevKey + 1);
       console.log("Correct");
       setScore((prevState) => prevState + 20);
       setGuessed((prevState) => [...prevState, random]);
+      console.log("guessed.length inside CheckAns:", guessed.length);
       setRemainingWords((prevState) => prevState - 1);
       setStreak((prevState) => prevState + 1);
       getNewAnswer();
@@ -90,7 +96,7 @@ const GameArea = () => {
       setLives((prevState) => prevState - 1);
       setStreak(0);
       if (lives >= 1) {
-        alert(`You lost 1 Life.\nYou have ${lives} lives remaining.`);
+        alert(`You lost 1 Life.\nYou have ${lives - 1} lives remaining.`);
       } else {
         alert("Game Over. Press 'Restart' to play again.");
       }
@@ -147,6 +153,10 @@ const GameArea = () => {
                 alt="jar"
               />
             </p>
+
+            {/* 
+  ***************TIMER DISABLED *************** *
+            
             <div className="timer-wrapper">
               <CountdownCircleTimer
                 key={key}
@@ -158,7 +168,8 @@ const GameArea = () => {
               >
                 {RenderTime}
               </CountdownCircleTimer>
-            </div>
+            </div> */}
+            <Jars count={guessed.length} />
           </Fade>
         </div>
 
