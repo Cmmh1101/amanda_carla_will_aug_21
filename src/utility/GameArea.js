@@ -27,7 +27,7 @@ const GameArea = () => {
     if (lives < 1) {
       return (
         <div>
-          <p>"Game Over. <br/>Press Restart to play again."</p>
+          <p>Game Over. <br/>Press Restart to play again.</p>
         </div>
       );
     }
@@ -36,6 +36,7 @@ const GameArea = () => {
       setKey(prevKey => prevKey + 1);
       getNewAnswer();
       setLives(lives - 1);
+      setStreak(0);
       return <div className="timer">Too late...Lose 1 life</div>;
     }
     return (
@@ -120,9 +121,6 @@ const GameArea = () => {
     }
   };
   console.log("New Score", score, "\nGuessed inside check ans:", guessed);
-
-  //EMOJIS are randomized by utility/ShuffleArray.js
-
   // console.log("Correcto", this.state.random);
 
   return (
@@ -157,10 +155,10 @@ const GameArea = () => {
 
         {/* Game Execution */}
         <div className="play">
-          <div className="col-2">
+          <div className="col-4">
             <Streak streak={streak} />
           </div>
-          <div className="col-6">
+          <div className="col">
             <Fade in>
               <CountdownCircleTimer
                 key = {key}
