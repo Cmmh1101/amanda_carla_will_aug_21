@@ -23,7 +23,7 @@ const GameArea = () => {
 
   /********** TIMER IN GAME COMPONENT **************/
   const RenderTime = ({ remainingTime }) => {
-    if (lives < 1) {
+    if (lives < 1 || guessed.length === EMOJIS.length) {
       return (
         <div>
           <p>
@@ -69,12 +69,13 @@ const GameArea = () => {
   const getNewAnswer = () => {
     // This is NOT currently working the way we want it to!
     let num = Math.floor(Math.random() * EMOJIS.length);
-    if (guessed.length === EMOJIS.length) {
+    /* if (guessed.length === EMOJIS.length) {
       alert(
-        `Congratulations! You Won. Your top score is ${score}.\nPress "Restart" to start a new game.`
+        `Congratulations! You Won. Your top score is ${score}.\nPress "Ok" to start a new game.`
       );
-    }
-    if (guessed.includes(num) === true) {
+      RefreshPage();
+    } */
+    if (guessed.includes(num) === true && guessed.length < EMOJIS.length) {
       console.log("repeats", num, "\nguessed", guessed);
       getNewAnswer();
     } else {
@@ -90,7 +91,9 @@ const GameArea = () => {
       console.log("guessed.length inside CheckAns:", guessed.length);
       setRemainingWords((prevState) => prevState - 1);
       setStreak((prevState) => prevState + 1);
-      getNewAnswer();
+      if (guessed.length < EMOJIS.length) {
+        getNewAnswer();
+      }
 
       /***** GIVE BONUS POINTS FOR WINNING STREAKS *******/
       console.log("streak", streak);
@@ -100,7 +103,7 @@ const GameArea = () => {
         console.log("Streak score", streakPoints);
       }
       /****** END GAME IF USER RUNS OUT OF WORDS ******/
-      if (remainingWords === 0) {
+      if (remainingWords === 0 || guessed.length === EMOJIS.length) {
         alert(
           `Congratulations! You Won. Your top score is ${score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
         );
