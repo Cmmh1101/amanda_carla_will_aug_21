@@ -1,5 +1,5 @@
 export const EMOJIS = [
-  {
+  /* {
     id: 1,
     english: "Milk",
     spanish: "La Leche",
@@ -118,7 +118,7 @@ export const EMOJIS = [
     english: "Lemon",
     spanish: "El Limon",
     emoji: "🍋",
-  },
+  }, */
   {
     id: 21,
     english: "Oyster",

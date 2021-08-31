@@ -15,7 +15,7 @@ const GameArea = () => {
   const [score, setScore] = useState(0);
   const [remainingWords, setRemainingWords] = useState(EMOJIS.length);
   const [lives, setLives] = useState(0);
-  const [streak, setStreak] = useState(0);
+  const [streak, setStreak] = useState(1);
   const [language, setLanguage] = useState("spanish");
   const [key, setKey] = useState(0);
   const [gameIsLoaded, setGameIsLoaded] = useState(false);
@@ -43,7 +43,7 @@ const GameArea = () => {
       setKey((prevKey) => prevKey + 1);
       getNewAnswer();
       setLives((prevLives) => prevLives - 1);
-      setStreak(0);
+      setStreak(1);
     }
   };
   /********** TIMER IN GAME COMPONENT **************/
@@ -92,7 +92,7 @@ const GameArea = () => {
     setScore(0);
     setLives(0);
     setRemainingWords(EMOJIS.length);
-    setStreak(0);
+    setStreak(1);
     setKey((prevKey) => prevKey + 1);
     setGameIsLoaded(false);
   };
@@ -154,7 +154,7 @@ const GameArea = () => {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
       setKey((prevKey) => prevKey + 1);
       setLives((prevState) => prevState - 1);
-      setStreak(0);
+      setStreak(1);
       if (lives >= 1) {
         setAnswerEmoji("❌ Try again");
       } else {
