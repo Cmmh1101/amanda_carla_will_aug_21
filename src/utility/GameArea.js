@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "reactstrap";
 import { Fade } from "react-animation-components";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
@@ -7,8 +7,6 @@ import Jars from "../components/jars/Jars";
 import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
-
-
 
 const GameArea = () => {
   const [random, setRandom] = useState(
@@ -21,6 +19,7 @@ const GameArea = () => {
   const [streak, setStreak] = useState(0);
   const [language, setLanguage] = useState("spanish");
   const [key, setKey] = useState(0);
+  const [gameIsLoaded, setGameIsLoaded] = useState(false);
 
   /********** TIMER IN GAME COMPONENT **************/
   const RenderTime = ({ remainingTime }) => {
@@ -72,6 +71,11 @@ const GameArea = () => {
   const getNewAnswer = () => {
     // This is NOT currently working the way we want it to!
     let num = Math.floor(Math.random() * EMOJIS.length);
+    if (guessed.length === EMOJIS.length) {
+      alert(
+        `Congratulations! You Won. Your top score is ${score}.\nPress "Restart" to start a new game.`
+      );
+    }
     if (guessed.includes(num) === true) {
       console.log("repeats", num, "\nguessed", guessed);
       getNewAnswer();
@@ -82,15 +86,9 @@ const GameArea = () => {
   };
 
   /****** CHECK IF PICTURE CLICKED MATCHES WORD ON SCREEN *******/
-  const checkAnswer = (event) => {
-    const clickedEmoji = event.target.innerText;
-    const correctEmoji = EMOJIS[random].emoji;
-    console.log(clickedEmoji, correctEmoji);
-    if (clickedEmoji === correctEmoji) {
-      setKey(prevKey => prevKey + 1);
-      console.log("Correct");
-      setScore((prevState) => prevState + 20);
-      setGuessed((prevState) => [...prevState, random]);
+  useEffect(() => {
+    if (gameIsLoaded) {
+      console.log("guessed array", guessed);
       console.log("guessed.length inside CheckAns:", guessed.length);
       setRemainingWords((prevState) => prevState - 1);
       setStreak((prevState) => prevState + 1);
@@ -109,6 +107,22 @@ const GameArea = () => {
           `Congratulations! You Won. Your top score is ${score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
         );
       }
+    } else {
+      setGameIsLoaded(true);
+    }
+  },[guessed])
+
+  const checkAnswer = (event) => {
+    const clickedEmoji = event.target.innerText;
+    const correctEmoji = EMOJIS[random].emoji;
+    console.log(clickedEmoji, correctEmoji);
+    if (clickedEmoji === correctEmoji) {
+      setKey(prevKey => prevKey + 1);
+      console.log("Correct");
+      setScore((prevState) => prevState + 20);
+      console.log("guessed array before", guessed);
+      setGuessed((prevState) => [...prevState, random]);
+      
     } else {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
       setKey(prevKey => prevKey + 1);
@@ -177,7 +191,6 @@ const GameArea = () => {
             <Jars count={guessed.length} />
           </div>
         </div>
-
         <div className="answer_options">
           <h3>Los Opciones</h3>
           <GenerateAnswers
