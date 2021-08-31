@@ -34,13 +34,17 @@ const GameArea = () => {
   const onTimerEnd = () => {
     if (lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) {
       setGameIsLoaded(false);
+      const bonusLivesPts = 50 * lives
+      setScore((prevState) => prevState + bonusLivesPts);
+      console.log("bonusLivesPts", bonusLivesPts);
+      setLives(0);
     } else {
       alert("Too late...Lose 1 life");
+      setKey((prevKey) => prevKey + 1);
+      getNewAnswer();
+      setLives((prevLives) => prevLives - 1);
+      setStreak(0);
     }
-    setKey((prevKey) => prevKey + 1);
-    getNewAnswer();
-    setLives((prevLives) => prevLives - 1);
-    setStreak(0);
   };
   /********** TIMER IN GAME COMPONENT **************/
   const RenderTime = () => {
