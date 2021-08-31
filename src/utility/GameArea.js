@@ -8,8 +8,6 @@ import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
 
-
-
 const GameArea = () => {
   const [random, setRandom] = useState(
     Math.floor(Math.random() * EMOJIS.length)
@@ -27,13 +25,16 @@ const GameArea = () => {
     if (lives < 1) {
       return (
         <div>
-          <p>Game Over. <br/>Press Restart to play again.</p>
+          <p>
+            Game Over. <br />
+            Press Restart to play again.
+          </p>
         </div>
       );
     }
     if (remainingTime === 0) {
       /*These need to be put into a parent function */
-      setKey(prevKey => prevKey + 1);
+      setKey((prevKey) => prevKey + 1);
       getNewAnswer();
       setLives(lives - 1);
       setStreak(0);
@@ -46,11 +47,7 @@ const GameArea = () => {
             {language === "spanish"
               ? EMOJIS[random].spanish
               : EMOJIS[random].english}
-            <img
-              className="word-jar"
-              src="../images/glassjar.png"
-              alt="jar"
-            />
+            <img className="word-jar" src="../images/glassjar.png" alt="jar" />
           </p>
         </div>
       </div>
@@ -65,7 +62,7 @@ const GameArea = () => {
     setRemainingWords(EMOJIS.length);
     setLives(5);
     setStreak(0);
-    setKey(prevKey => prevKey + 1);
+    setKey((prevKey) => prevKey + 1);
   };
 
   /*******REASSIGN NEW RANDOM#(MUST NOT BE IN guessed[])*****/
@@ -87,7 +84,7 @@ const GameArea = () => {
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
-      setKey(prevKey => prevKey + 1);
+      setKey((prevKey) => prevKey + 1);
       console.log("Correct");
       setScore((prevState) => prevState + 20);
       setGuessed((prevState) => [...prevState, random]);
@@ -111,7 +108,7 @@ const GameArea = () => {
       }
     } else {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
-      setKey(prevKey => prevKey + 1);
+      setKey((prevKey) => prevKey + 1);
       setLives((prevState) => prevState - 1);
       setStreak(0);
       if (lives >= 1) {
@@ -132,8 +129,9 @@ const GameArea = () => {
             Restart
           </Button>
           <Button className="btn-block" onClick={ChangeLanguage}>
-            {`Change Language to ${language === "spanish" ? "English" : "Spanish"
-              }`}
+            {`Change Language to ${
+              language === "spanish" ? "English" : "Spanish"
+            }`}
           </Button>
         </div>
         <div className="board">
@@ -159,17 +157,18 @@ const GameArea = () => {
           <div className="col-4">
             <Streak streak={streak} />
           </div>
-          <div className="col">
+          <div className="col circle_timer">
             <Fade in>
               <CountdownCircleTimer
-                key = {key}
+                key={key}
                 isPlaying
                 size={250}
                 duration={5}
                 colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
                 onComplete={() => [true, 5000]}
+                className="circle_timer"
               >
-                {RenderTime} 
+                {RenderTime}
               </CountdownCircleTimer>
             </Fade>
           </div>

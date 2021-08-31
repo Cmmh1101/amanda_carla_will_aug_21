@@ -122,7 +122,7 @@ export const EMOJIS = [
   {
     id: 21,
     english: "Oyster",
-    spanish: "El Ostra",
+    spanish: "La Ostra",
     emoji: "🦪",
   },
   {
@@ -152,7 +152,7 @@ export const EMOJIS = [
   {
     id: 26,
     english: "Meat",
-    spanish: "El Carne",
+    spanish: "La Carne",
     emoji: "🥩",
   },
   {
