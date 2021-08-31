@@ -19,29 +19,16 @@ const GameArea = () => {
   const [language, setLanguage] = useState("spanish");
   const [key, setKey] = useState(0);
   const [gameIsLoaded, setGameIsLoaded] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState();
   const [answerEmoji, setAnswerEmoji] = useState("");
   /********Visibility for temp. messages**********/
 
-  const Message = () => {
-    useEffect(() => {
-      // setVisible(true);
-      const timer = setTimeout(() => {
-        setVisible(false);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }, []);
-    return (
-      <>
-        <Fade when={visible}>
-          <p>{answerEmoji}</p>
-        </Fade>
-      </>
-    );
-    // if (visible === true) {
-    // return <p>{answerEmoji}</p>;
-    // } else return <div></div>;
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [visible]);
 
   const CheckLoaded = (event) => {
     console.log(event);
@@ -64,7 +51,24 @@ const GameArea = () => {
     alert("Too late...Lose 1 life");
   };
   /********** TIMER IN GAME COMPONENT **************/
-  const RenderTime = ({ remainingTime }) => {
+  const RenderTime = () => {
+
+    const Message = () => {
+      /* useEffect(() => {
+        const timer = setTimeout(() => {
+          setVisible(false);
+        }, 500);
+        return () => clearTimeout(timer);
+      }, []); */
+      return (
+        <>
+          <Fade when={visible}>
+            <p>{answerEmoji}</p>
+          </Fade>
+        </>
+      );
+    };
+
     if (gameIsLoaded === false) {
       return (
         <div className="timer">
@@ -93,6 +97,7 @@ const GameArea = () => {
               : EMOJIS[random].english}
             <img className="word-jar" src="../images/glassjar.png" alt="jar" />
           </p>
+          <Message />
         </div>
       </div>
     );
@@ -146,12 +151,11 @@ const GameArea = () => {
           `Congratulations! You Won. Your top score is ${score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
         );
       }
-    } /* else {
-      setGameIsLoaded(true);
-    } */
+    } 
   }, [guessed]);
 
   const checkAnswer = (event) => {
+    setVisible(true);
     const clickedEmoji = event.target.innerText;
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
@@ -161,7 +165,6 @@ const GameArea = () => {
       setScore((prevState) => prevState + 20);
       console.log("guessed array before", guessed);
       setGuessed((prevState) => [...prevState, random]);
-      setVisible(true);
       setAnswerEmoji("✅");
     } else {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
@@ -170,7 +173,6 @@ const GameArea = () => {
       setStreak(0);
       setAnswerEmoji("❌");
       if (lives >= 1) {
-        alert(`You lost 1 Life.\nYou have ${lives - 1} lives remaining.`);
         setVisible(true);
       } else {
         alert("Game Over. Press 'Restart' to play again.");
@@ -242,9 +244,6 @@ const GameArea = () => {
           />
         </div>
         <img className="game_area_img" src="../images/basekitchen.png" alt="" />
-      </div>
-      <div className="col">
-        <Message />
       </div>
     </>
   );
