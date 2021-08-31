@@ -5,7 +5,7 @@ import { FadeTransform } from "react-animation-components";
 
 const Hero = () => (
   <>
-    <Jumbotron className="jumbo-fluid hero m-0">
+    <Jumbotron className="jumbo-fluid hero m-0 mt-4">
       <div className="container">
         <div className="row">
           <div className="col-lg-10 mx-auto hero-text">
@@ -18,7 +18,7 @@ const Hero = () => (
             >
               <h1>Welcome to The Jar Game</h1>
               <p>
-                The best place to have FUN while testing your Spanish skills!
+                The best place to have FUN while testing your Spanish (or English) skills!
               </p>
 
               <div className="buttons">
@@ -27,6 +27,7 @@ const Hero = () => (
                   Play Now
                 </Link>
               </div>
+              <p>Keep jars from breaking!!</p><br/><br/>
             </FadeTransform>
           </div>
         </div>

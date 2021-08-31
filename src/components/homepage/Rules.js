@@ -24,23 +24,20 @@ const Rules = () => {
                 <div className="col-12 col-md-6">
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    It's time to brush up on your Spanish vocabulary! Spanish
-                    words
+                    It's time to brush up on your Spanish vocabulary with Spanish
+                    words.
                   </p>
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    Be careful, though! If the jar reaches the bottom of the
-                    screen
+                    If you'd prefer, you could instead choose to brush up on your English vocabulary with English words.
                   </p>
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    Be careful, though! If the jar reaches the bottom of the
-                    screen
+                    Be careful, though! If the timer runs out, you've broken a jar and will lose a life!
                   </p>
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    Be careful, though! If the jar reaches the bottom of the
-                    screen
+                    Once you've "broken" 5 jars, it's game over. 
                   </p>
                 </div>
                 <div className=" col-12 col-md-6">
