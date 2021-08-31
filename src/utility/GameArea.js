@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "reactstrap";
-import { Fade } from "react-animation-components";
+import Fade from "react-reveal/Fade";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { EMOJIS } from "../shared/emojis";
-import Jars from "../components/jars/Jars";
 import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
@@ -21,26 +20,38 @@ const GameArea = () => {
   const [key, setKey] = useState(0);
   const [gameIsLoaded, setGameIsLoaded] = useState(false);
   const [visible, setVisible] = useState(false);
-
+  const [answerEmoji, setAnswerEmoji] = useState("");
   /********Visibility for temp. messages**********/
-  useEffect(() => {
-    setVisible(true);
-    setTimeout(() => {
-      setVisible(false);
-    }, 500);
-  }, []);
+
+  const Message = () => {
+    useEffect(() => {
+      // setVisible(true);
+      const timer = setTimeout(() => {
+        setVisible(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }, []);
+    return (
+      <>
+        <Fade when={visible}>
+          <p>{answerEmoji}</p>
+        </Fade>
+      </>
+    );
+    // if (visible === true) {
+    // return <p>{answerEmoji}</p>;
+    // } else return <div></div>;
+  };
 
   const CheckLoaded = (event) => {
     console.log(event);
     if (gameIsLoaded === false) {
       setGameIsLoaded(true);
       setLives(5);
-      
-    }
-    else {
+    } else {
       RefreshPage();
     }
-  }
+  };
 
   const onTimerEnd = () => {
     if (lives < 1 || guessed.length === EMOJIS.length) {
@@ -51,18 +62,18 @@ const GameArea = () => {
     setLives((prevLives) => prevLives - 1);
     setStreak(0);
     alert("Too late...Lose 1 life");
-    
-    
-  }
+  };
   /********** TIMER IN GAME COMPONENT **************/
   const RenderTime = ({ remainingTime }) => {
     if (gameIsLoaded === false) {
-      return(
+      return (
         <div className="timer">
-          <p><strong>Presione Jugar</strong></p>
-          
+          <p>
+            <strong>Presione Jugar</strong>
+          </p>
         </div>
-      )};
+      );
+    }
     if ((lives < 1 || guessed.length === EMOJIS.length) && gameIsLoaded) {
       return (
         <div>
@@ -130,7 +141,7 @@ const GameArea = () => {
         console.log("Streak score", streakPoints);
       }
       /****** END GAME IF USER RUNS OUT OF WORDS ******/
-      if ( guessed.length === EMOJIS.length) {
+      if (guessed.length === EMOJIS.length) {
         alert(
           `Congratulations! You Won. Your top score is ${score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
         );
@@ -138,25 +149,29 @@ const GameArea = () => {
     } /* else {
       setGameIsLoaded(true);
     } */
-  }, [guessed])
+  }, [guessed]);
 
   const checkAnswer = (event) => {
     const clickedEmoji = event.target.innerText;
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
-      setKey(prevKey => prevKey + 1);
+      setKey((prevKey) => prevKey + 1);
       console.log("Correct");
       setScore((prevState) => prevState + 20);
       console.log("guessed array before", guessed);
       setGuessed((prevState) => [...prevState, random]);
+      setVisible(true);
+      setAnswerEmoji("✅");
     } else {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
       setKey((prevKey) => prevKey + 1);
       setLives((prevState) => prevState - 1);
       setStreak(0);
+      setAnswerEmoji("❌");
       if (lives >= 1) {
         alert(`You lost 1 Life.\nYou have ${lives - 1} lives remaining.`);
+        setVisible(true);
       } else {
         alert("Game Over. Press 'Restart' to play again.");
       }
@@ -170,11 +185,12 @@ const GameArea = () => {
       <div className="col-md-8 game-area">
         <div className="play_restart_btns">
           <Button className="btn-block" onClick={CheckLoaded}>
-            {language === 'spanish' ? "¡Juega Ahora!" : "Play Now"}
+            {language === "spanish" ? "¡Juega Ahora!" : "Play Now"}
           </Button>
           <Button className="btn-block mt-0" onClick={ChangeLanguage}>
-            {`Change Language to ${language === "spanish" ? "English" : "Spanish"
-              }`}
+            {`Change Language to ${
+              language === "spanish" ? "English" : "Spanish"
+            }`}
           </Button>
         </div>
         <div className="board">
@@ -204,7 +220,7 @@ const GameArea = () => {
             <Fade in>
               <CountdownCircleTimer
                 key={key}
-                isPlaying = {lives > 0}
+                isPlaying={lives > 0}
                 size={250}
                 duration={5}
                 colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
@@ -214,9 +230,6 @@ const GameArea = () => {
                 {RenderTime}
               </CountdownCircleTimer>
             </Fade>
-          </div>
-          <div className="col">
-            <Jars count={guessed.length} />
           </div>
         </div>
         <div className="answer_options">
@@ -229,6 +242,9 @@ const GameArea = () => {
           />
         </div>
         <img className="game_area_img" src="../images/basekitchen.png" alt="" />
+      </div>
+      <div className="col">
+        <Message />
       </div>
     </>
   );
