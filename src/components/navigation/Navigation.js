@@ -26,13 +26,11 @@ const Navigation = () => {
               <NavLink to="/">Home</NavLink>
             </NavItem>
             <NavItem tag="li">
+              <NavLink to="/rules">Rules</NavLink>
+            </NavItem>
+            <NavItem tag="li">
               <NavLink to="/gamepage">Play</NavLink>
             </NavItem>
-            {/* <NavItem tag="li">
-              <NavLink tag="a" to="/ourteam">
-                Our Team
-              </NavLink>
-            </NavItem> */}
             <NavItem tag="li">
               <NavLink to="/contactus">Contact Us</NavLink>
             </NavItem>
