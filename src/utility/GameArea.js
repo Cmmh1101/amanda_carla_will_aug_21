@@ -25,21 +25,22 @@ const GameArea = () => {
     console.log(event);
     if (gameIsLoaded === false) {
       setGameIsLoaded(true);
-      setLives(1);
+      setLives(5);
     } else {
       RefreshPage();
     }
   };
 
   const onTimerEnd = () => {
-    if (lives < 1 || guessed.length === EMOJIS.length) {
+    if (lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) {
       setGameIsLoaded(false);
+    } else {
+      alert("Too late...Lose 1 life");
     }
     setKey((prevKey) => prevKey + 1);
     getNewAnswer();
     setLives((prevLives) => prevLives - 1);
     setStreak(0);
-    alert("Too late...Lose 1 life");
   };
   /********** TIMER IN GAME COMPONENT **************/
   const RenderTime = () => {
@@ -54,7 +55,7 @@ const GameArea = () => {
         </div>
       );
     }
-    if ((lives < 1 || guessed.length === EMOJIS.length) && gameIsLoaded) {
+    if ((lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) && gameIsLoaded) {
       return (
         <div>
           <p>
@@ -68,6 +69,7 @@ const GameArea = () => {
     return (
       <div className="timer">
         <div className="value">
+          <p>{answerEmoji}</p>
           <p className="word_in_play active">
             {language === "spanish"
               ? EMOJIS[random].spanish
@@ -112,7 +114,11 @@ const GameArea = () => {
       setStreak((prevState) => prevState + 1);
       if (guessed.length < EMOJIS.length) {
         getNewAnswer();
-      }
+      }/* 
+      if (answerEmoji !== "") {
+        let timer1 = setTimeout(() => setAnswerEmoji(""), 1000);
+        return () => { clearTimeout(timer1) };
+      } */
 
       /***** GIVE BONUS POINTS FOR WINNING STREAKS *******/
       console.log("streak", streak);
@@ -123,14 +129,11 @@ const GameArea = () => {
       }
       /****** END GAME IF USER RUNS OUT OF WORDS ******/
       if (guessed.length === EMOJIS.length) {
-        alert(
-          `Congratulations! You Won. Your top score is ${score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
-        );
+        setAnswerEmoji("Congrats, you've won! 🏆")
+        onTimerEnd();
       }
-    } /* else {
-      setGameIsLoaded(true);
-    } */
-  }, [guessed]);
+    }
+  }, [guessed, answerEmoji]);
 
   const checkAnswer = (event) => {
     const clickedEmoji = event.target.innerText;
@@ -142,15 +145,14 @@ const GameArea = () => {
       setScore((prevState) => prevState + 20);
       console.log("guessed array before", guessed);
       setGuessed((prevState) => [...prevState, random]);
-      setAnswerEmoji("✅");
+      setAnswerEmoji("✅ Great Job!");
     } else {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
       setKey((prevKey) => prevKey + 1);
       setLives((prevState) => prevState - 1);
       setStreak(0);
-      setAnswerEmoji("❌");
       if (lives >= 1) {
-        alert(`You lost 1 Life.\nYou have ${lives - 1} lives remaining.`);
+        setAnswerEmoji("❌ Try again");
       } else {
         alert("Game Over. Press 'Restart' to play again.");
       }

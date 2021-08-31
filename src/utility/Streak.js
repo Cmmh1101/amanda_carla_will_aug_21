@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { FEEDBACK } from "../shared/feedback";
+import React from "react";
 
 export const Streak = (props) => {
   if (props.streak >= 3) {
