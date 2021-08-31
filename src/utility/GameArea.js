@@ -15,7 +15,7 @@ const GameArea = () => {
   const [score, setScore] = useState(0);
   const [remainingWords, setRemainingWords] = useState(EMOJIS.length);
   const [lives, setLives] = useState(0);
-  const [streak, setStreak] = useState(0);
+  const [streak, setStreak] = useState(1);
   const [language, setLanguage] = useState("spanish");
   const [key, setKey] = useState(0);
   const [gameIsLoaded, setGameIsLoaded] = useState(false);
@@ -26,6 +26,11 @@ const GameArea = () => {
     if (gameIsLoaded === false) {
       setGameIsLoaded(true);
       setLives(5);
+      setScore(0);
+      setRemainingWords(EMOJIS.length);
+      setGuessed([]);
+      setStreak(1);
+      setKey(0);
     } else {
       RefreshPage();
     }
@@ -34,16 +39,16 @@ const GameArea = () => {
   const onTimerEnd = () => {
     if (lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) {
       setGameIsLoaded(false);
-      const bonusLivesPts = 50 * lives
+      /* const bonusLivesPts = 50 * lives
       setScore((prevState) => prevState + bonusLivesPts);
       console.log("bonusLivesPts", bonusLivesPts);
-      setLives(0);
+      setLives(0); */
     } else {
       alert("Too late...Lose 1 life");
       setKey((prevKey) => prevKey + 1);
       getNewAnswer();
       setLives((prevLives) => prevLives - 1);
-      setStreak(0);
+      setStreak(1);
     }
   };
   /********** TIMER IN GAME COMPONENT **************/
@@ -59,7 +64,13 @@ const GameArea = () => {
         </div>
       );
     }
+
+    // This runs before onTimerEnd and then runs again when timer ends to first if above
     if ((lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) && gameIsLoaded) {
+      const bonusLivesPts = 50 * lives
+      setScore((prevState) => prevState + bonusLivesPts);
+      console.log("bonusLivesPts", bonusLivesPts);
+      setLives(0);
       return (
         <div>
           <p>
@@ -92,7 +103,7 @@ const GameArea = () => {
     setScore(0);
     setLives(0);
     setRemainingWords(EMOJIS.length);
-    setStreak(0);
+    setStreak(1);
     setKey((prevKey) => prevKey + 1);
     setGameIsLoaded(false);
   };
@@ -118,11 +129,7 @@ const GameArea = () => {
       setStreak((prevState) => prevState + 1);
       if (guessed.length < EMOJIS.length) {
         getNewAnswer();
-      }/* 
-      if (answerEmoji !== "") {
-        let timer1 = setTimeout(() => setAnswerEmoji(""), 1000);
-        return () => { clearTimeout(timer1) };
-      } */
+      }
 
       /***** GIVE BONUS POINTS FOR WINNING STREAKS *******/
       console.log("streak", streak);
@@ -137,6 +144,10 @@ const GameArea = () => {
         onTimerEnd();
       }
     }
+    /* if (answerEmoji !== "") {
+      let timer1 = setTimeout(() => setAnswerEmoji(""), 1000);
+      return () => { clearTimeout(timer1) };
+    } */
   }, [guessed, answerEmoji]);
 
   const checkAnswer = (event) => {
@@ -154,7 +165,7 @@ const GameArea = () => {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
       setKey((prevKey) => prevKey + 1);
       setLives((prevState) => prevState - 1);
-      setStreak(0);
+      setStreak(1);
       if (lives >= 1) {
         setAnswerEmoji("❌ Try again");
       } else {
