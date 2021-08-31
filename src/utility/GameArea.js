@@ -15,30 +15,63 @@ const GameArea = () => {
   const [guessed, setGuessed] = useState([]);
   const [score, setScore] = useState(0);
   const [remainingWords, setRemainingWords] = useState(EMOJIS.length);
-  const [lives, setLives] = useState(5);
+  const [lives, setLives] = useState(0);
   const [streak, setStreak] = useState(0);
   const [language, setLanguage] = useState("spanish");
   const [key, setKey] = useState(0);
   const [gameIsLoaded, setGameIsLoaded] = useState(false);
+  const [visible, setVisible] = useState(false);
 
+  /********Visibility for temp. messages**********/
+  useEffect(() => {
+    setVisible(true);
+    setTimeout(() => {
+      setVisible(false);
+    }, 500);
+  }, []);
+
+  const CheckLoaded = (event) => {
+    console.log(event);
+    if (gameIsLoaded === false) {
+      setGameIsLoaded(true);
+      setLives(5);
+      
+    }
+    else {
+      RefreshPage();
+    }
+  }
+
+  const onTimerEnd = () => {
+    if (lives < 1 || guessed.length === EMOJIS.length) {
+      setGameIsLoaded(false);
+    }
+    setKey((prevKey) => prevKey + 1);
+    getNewAnswer();
+    setLives((prevLives) => prevLives - 1);
+    setStreak(0);
+    alert("Too late...Lose 1 life");
+    
+    
+  }
   /********** TIMER IN GAME COMPONENT **************/
   const RenderTime = ({ remainingTime }) => {
-    if (lives < 1 || guessed.length === EMOJIS.length) {
+    if (gameIsLoaded === false) {
+      return(
+        <div className="timer">
+          <p><strong>Presione Jugar</strong></p>
+          
+        </div>
+      )};
+    if ((lives < 1 || guessed.length === EMOJIS.length) && gameIsLoaded) {
       return (
         <div>
           <p>
             Game Over. <br />
-            Press Restart to play again.
+            Press Play to play again.
           </p>
         </div>
       );
-    }
-    if (remainingTime === 0) {
-      setKey((prevKey) => prevKey + 1);
-      getNewAnswer();
-      setLives(lives - 1);
-      setStreak(0);
-      return <div className="timer">Too late...Lose 1 life</div>;
     }
     return (
       <div className="timer">
@@ -59,22 +92,16 @@ const GameArea = () => {
     setLanguage(language === "spanish" ? "english" : "spanish");
     setRandom(Math.floor(Math.random() * EMOJIS.length));
     setScore(0);
+    setLives(0);
     setRemainingWords(EMOJIS.length);
-    setLives(5);
     setStreak(0);
     setKey((prevKey) => prevKey + 1);
+    setGameIsLoaded(false);
   };
 
   /*******REASSIGN NEW RANDOM#(MUST NOT BE IN guessed[])*****/
   const getNewAnswer = () => {
-    // This is NOT currently working the way we want it to!
     let num = Math.floor(Math.random() * EMOJIS.length);
-    /* if (guessed.length === EMOJIS.length) {
-      alert(
-        `Congratulations! You Won. Your top score is ${score}.\nPress "Ok" to start a new game.`
-      );
-      RefreshPage();
-    } */
     if (guessed.includes(num) === true && guessed.length < EMOJIS.length) {
       console.log("repeats", num, "\nguessed", guessed);
       getNewAnswer();
@@ -87,8 +114,8 @@ const GameArea = () => {
   /****** CHECK IF PICTURE CLICKED MATCHES WORD ON SCREEN *******/
   useEffect(() => {
     if (gameIsLoaded) {
-      console.log("guessed array", guessed);
-      console.log("guessed.length inside CheckAns:", guessed.length);
+      // console.log("guessed array", guessed);
+      // console.log("guessed.length inside CheckAns:", guessed.length);
       setRemainingWords((prevState) => prevState - 1);
       setStreak((prevState) => prevState + 1);
       if (guessed.length < EMOJIS.length) {
@@ -103,15 +130,15 @@ const GameArea = () => {
         console.log("Streak score", streakPoints);
       }
       /****** END GAME IF USER RUNS OUT OF WORDS ******/
-      if (remainingWords === 0 || guessed.length === EMOJIS.length) {
+      if ( guessed.length === EMOJIS.length) {
         alert(
           `Congratulations! You Won. Your top score is ${score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
         );
       }
-    } else {
+    } /* else {
       setGameIsLoaded(true);
-    }
-  },[guessed])
+    } */
+  }, [guessed])
 
   const checkAnswer = (event) => {
     const clickedEmoji = event.target.innerText;
@@ -142,13 +169,12 @@ const GameArea = () => {
     <>
       <div className="col-md-8 game-area">
         <div className="play_restart_btns">
-          <Button className="btn-block" onClick={RefreshPage}>
-            Restart
+          <Button className="btn-block" onClick={CheckLoaded}>
+            {language === 'spanish' ? "¡Juega Ahora!" : "Play Now"}
           </Button>
           <Button className="btn-block mt-0" onClick={ChangeLanguage}>
-            {`Change Language to ${
-              language === "spanish" ? "English" : "Spanish"
-            }`}
+            {`Change Language to ${language === "spanish" ? "English" : "Spanish"
+              }`}
           </Button>
         </div>
         <div className="board">
@@ -178,11 +204,11 @@ const GameArea = () => {
             <Fade in>
               <CountdownCircleTimer
                 key={key}
-                isPlaying
+                isPlaying = {lives > 0}
                 size={250}
                 duration={5}
                 colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-                onComplete={() => [true, 5000]}
+                onComplete={() => onTimerEnd()}
                 className="circle_timer"
               >
                 {RenderTime}
