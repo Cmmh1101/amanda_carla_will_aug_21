@@ -3,7 +3,6 @@ import { Button } from "reactstrap";
 import { Fade } from "react-animation-components";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { EMOJIS } from "../shared/emojis";
-import Jars from "../components/jars/Jars";
 import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
@@ -34,13 +33,11 @@ const GameArea = () => {
     console.log(event);
     if (gameIsLoaded === false) {
       setGameIsLoaded(true);
-      setLives(5);
-      
-    }
-    else {
+      setLives(1);
+    } else {
       RefreshPage();
     }
-  }
+  };
 
   const onTimerEnd = () => {
     if (lives < 1 || guessed.length === EMOJIS.length) {
@@ -51,24 +48,27 @@ const GameArea = () => {
     setLives((prevLives) => prevLives - 1);
     setStreak(0);
     alert("Too late...Lose 1 life");
-    
-    
-  }
+  };
   /********** TIMER IN GAME COMPONENT **************/
-  const RenderTime = ({ remainingTime }) => {
+  const RenderTime = () => {
     if (gameIsLoaded === false) {
-      return(
+      return (
         <div className="timer">
-          <p><strong>Presione Jugar</strong></p>
-          
+          <p>
+            <strong>
+              {language === "spanish" ? "Presione Jugar" : "Press Play"}
+            </strong>
+          </p>
         </div>
-      )};
+      );
+    }
     if ((lives < 1 || guessed.length === EMOJIS.length) && gameIsLoaded) {
       return (
         <div>
           <p>
-            Game Over. <br />
-            Press Play to play again.
+            {language === "spanish"
+              ? "Juego Terminado. Para volver a jugar, Presione Jugar!"
+              : `Game Over. Press Play to play again!`}
           </p>
         </div>
       );
@@ -130,7 +130,7 @@ const GameArea = () => {
         console.log("Streak score", streakPoints);
       }
       /****** END GAME IF USER RUNS OUT OF WORDS ******/
-      if ( guessed.length === EMOJIS.length) {
+      if (guessed.length === EMOJIS.length) {
         alert(
           `Congratulations! You Won. Your top score is ${score}.\nIf you are doing this for class, take a screenshot for your teacher and press "Restart" to start a new game.`
         );
@@ -138,14 +138,14 @@ const GameArea = () => {
     } /* else {
       setGameIsLoaded(true);
     } */
-  }, [guessed])
+  }, [guessed]);
 
   const checkAnswer = (event) => {
     const clickedEmoji = event.target.innerText;
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
     if (clickedEmoji === correctEmoji) {
-      setKey(prevKey => prevKey + 1);
+      setKey((prevKey) => prevKey + 1);
       console.log("Correct");
       setScore((prevState) => prevState + 20);
       console.log("guessed array before", guessed);
@@ -170,26 +170,27 @@ const GameArea = () => {
       <div className="col-md-8 game-area">
         <div className="play_restart_btns">
           <Button className="btn-block" onClick={CheckLoaded}>
-            {language === 'spanish' ? "¡Juega Ahora!" : "Play Now"}
+            {language === "spanish" ? "¡Juega Ahora!" : "Play Now"}
           </Button>
           <Button className="btn-block mt-0" onClick={ChangeLanguage}>
-            {`Change Language to ${language === "spanish" ? "English" : "Spanish"
-              }`}
+            {language === "spanish"
+              ? `Cambiar Idioma a Inglés.`
+              : `Change Language to Spanish`}
           </Button>
         </div>
         <div className="board">
           <div className="col-4 board_item">
-            <h6>Points</h6>
+            <h6>{language === "spanish" ? "Puntas" : "Points"}</h6>
             <hr />
             <span>{score}</span>
           </div>
           <div className="col-4 board_item">
-            <h6>Words</h6>
+            <h6>{language === "spanish" ? "Palabras" : "Words"}</h6>
             <hr />
             <span>{remainingWords}</span>
           </div>
           <div className="col-4 board_item">
-            <h6>Lives</h6>
+            <h6>{language === "spanish" ? "Vidas" : "Lives"}</h6>
             <hr />
             <span>{lives}</span>
           </div>
@@ -204,7 +205,7 @@ const GameArea = () => {
             <Fade in>
               <CountdownCircleTimer
                 key={key}
-                isPlaying = {lives > 0}
+                isPlaying={lives > 0}
                 size={250}
                 duration={5}
                 colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
@@ -215,12 +216,12 @@ const GameArea = () => {
               </CountdownCircleTimer>
             </Fade>
           </div>
-          <div className="col">
+          {/* <div className="col">
             <Jars count={guessed.length} />
-          </div>
+          </div> */}
         </div>
         <div className="answer_options">
-          <h3>Los Opciones</h3>
+          <h3>{language === "spanish" ? "Los Opciones" : "The Options"}</h3>
           <GenerateAnswers
             lives={lives}
             words={remainingWords}
