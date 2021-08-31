@@ -20,6 +20,15 @@ const GameArea = () => {
   const [language, setLanguage] = useState("spanish");
   const [key, setKey] = useState(0);
   const [gameIsLoaded, setGameIsLoaded] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  /********Visibility for temp. messages**********/
+  useEffect(() => {
+    setVisible(true);
+    setTimeout(() => {
+      setVisible(false);
+    }, 500);
+  }, []);
 
   const CheckLoaded = (event) => {
     console.log(event);
