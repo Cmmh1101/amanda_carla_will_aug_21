@@ -19,15 +19,7 @@ const GameArea = () => {
   const [language, setLanguage] = useState("spanish");
   const [key, setKey] = useState(0);
   const [gameIsLoaded, setGameIsLoaded] = useState(false);
-  const [visible, setVisible] = useState(false);
-
-  /********Visibility for temp. messages**********/
-  useEffect(() => {
-    setVisible(true);
-    setTimeout(() => {
-      setVisible(false);
-    }, 500);
-  }, []);
+  const [answerEmoji, setAnswerEmoji] = useState("");
 
   const CheckLoaded = (event) => {
     console.log(event);
@@ -150,11 +142,13 @@ const GameArea = () => {
       setScore((prevState) => prevState + 20);
       console.log("guessed array before", guessed);
       setGuessed((prevState) => [...prevState, random]);
+      setAnswerEmoji("✅");
     } else {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
       setKey((prevKey) => prevKey + 1);
       setLives((prevState) => prevState - 1);
       setStreak(0);
+      setAnswerEmoji("❌");
       if (lives >= 1) {
         alert(`You lost 1 Life.\nYou have ${lives - 1} lives remaining.`);
       } else {
