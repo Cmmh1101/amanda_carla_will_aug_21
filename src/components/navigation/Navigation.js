@@ -28,13 +28,13 @@ const Navigation = () => {
             <NavItem tag="li">
               <NavLink to="/gamepage">Play</NavLink>
             </NavItem>
-            <NavItem tag="li">
+            {/* <NavItem tag="li">
               <NavLink tag="a" to="/ourteam">
                 Our Team
               </NavLink>
-            </NavItem>
+            </NavItem> */}
             <NavItem tag="li">
-              <NavLink to="/contact">Contact Us</NavLink>
+              <NavLink to="/contactus">Contact Us</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

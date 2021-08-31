@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Rules = () => {
   return (
     <>
+    <section className="rules_section">
       <div className="container rules_container">
         <div className="row">
           <div className="col-10 mx-auto">
@@ -64,6 +65,7 @@ const Rules = () => {
           </div>
         </div>
       </div>
+      </section>
     </>
   );
 };

@@ -25,7 +25,7 @@ export const FEEDBACK = [
   },
   {
     id: 7,
-    feedback: "That's nice!!",
+    feedback: "That's nice!",
   },
   {
     id: 8,

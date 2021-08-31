@@ -11,13 +11,10 @@ const Layout = () => {
         <Features />
         <KitchenBg />
       </section>
-      <section className="rules_section">
         <Rules />
-      </section>
-      <section className="team_section">
         <Team />
         
-      </section>
+      
     </>
   );
 };

@@ -9,23 +9,27 @@ import {
   CardSubtitle,
   CardBody,
 } from "reactstrap";
+import { Fade } from "react-animation-components";
 
 const Team = () => {
   return (
     <>
-      <div className="col-10 mx-auto">
+    <section className="team_section">
+      <div className="col-10 mx-auto team_container" id="team">
         <h2>
           <i class="fa fa-beer" aria-hidden="true" />
           Meet Our Dev Team
         </h2>
-        <div className="col-12 d-flex flex-wrap">
-          <CardDeck>
+
+        <div className="col-12 team_cards">
+          <Fade in className="col-12 d-flex justify-content-center flex-wrap">
+            
             <Card className="cards">
               <CardImg
                 top
-                width="100%"
+                className="card-image"
                 src="/images/amandacircle2.png"
-                alt="Card image cap"
+                alt="Amanda Shuman"
               />
               <CardBody className="member-card">
                 <CardTitle tag="h5">Amanda Shuman</CardTitle>
@@ -58,9 +62,9 @@ const Team = () => {
             <Card className="cards">
               <CardImg
                 top
-                width="100%"
+                className="card-image"
                 src="/images/carlam.png"
-                alt="Card image cap"
+                alt="Carla Montano"
               />
               <CardBody className="member-card">
                 <CardTitle tag="h5">Carla Montano</CardTitle>
@@ -93,9 +97,9 @@ const Team = () => {
             <Card className="cards">
               <CardImg
                 top
-                width="100%"
+                className="card-image"
                 src="/images/willpcircle.png"
-                alt="Card image cap"
+                alt="Will Prouty"
               />
               <CardBody className="member-card">
                 <CardTitle tag="h5">Will Prouty</CardTitle>
@@ -126,9 +130,11 @@ const Team = () => {
                 </div>
               </CardBody>
             </Card>
-          </CardDeck>
+            </Fade>
+          
         </div>
       </div>
+      </section>
     </>
   );
 };

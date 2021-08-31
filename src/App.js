@@ -9,6 +9,7 @@ import Home from "./pages/homepage/HomePage";
 import Navigation from "./components/navigation/Navigation";
 import GamePage from "./pages/gamepage/GamePage";
 import Footer from "./components/footer/Footer";
+import Team from "./components/homepage/Team";
 import "./App.scss";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/homepage" component={Home} />
             <Route exact path="/gamepage" component={GamePage} />
+            <Route exact path="/contactus" component={Team} />
             <Redirect to="/homepage" />
           </Switch>
           <Footer />

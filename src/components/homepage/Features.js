@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FadeTransform } from "react-animation-components";
 
 const Features = () => {
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="col-10 mx-auto about">
+          <FadeTransform
+              in
+              transformProps={{
+                exitTransform: "scale(0.5) translateY(-300%)",
+              }}
+              delay="3500" className="col-10 mx-auto about">
             <h2>
               <i class="fa fa-beer" aria-hidden="true" />
               About the App
@@ -27,7 +33,7 @@ const Features = () => {
               <Link to="/gamepage">Play Now</Link>
               <Link to="/">See Demo</Link>
             </div>
-          </div>
+          </FadeTransform>
         </div>
       </div>
     </>

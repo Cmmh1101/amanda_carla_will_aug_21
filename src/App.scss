@@ -35,14 +35,15 @@ h2 {
     transform: rotate(15deg);
   }
 }
-    p {
-      margin-bottom: 2rem;
-    }
+p {
+  margin-bottom: 2rem;
+}
 
 .buttons {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: 2rem;
       a {
         margin: 0 20px;
         background-color: $blue_color;
