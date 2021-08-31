@@ -26,6 +26,11 @@ const GameArea = () => {
     if (gameIsLoaded === false) {
       setGameIsLoaded(true);
       setLives(5);
+      setScore(0);
+      setRemainingWords(EMOJIS.length);
+      setGuessed([]);
+      setStreak(1);
+      setKey(0);
     } else {
       RefreshPage();
     }
@@ -34,10 +39,10 @@ const GameArea = () => {
   const onTimerEnd = () => {
     if (lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) {
       setGameIsLoaded(false);
-      const bonusLivesPts = 50 * lives
+      /* const bonusLivesPts = 50 * lives
       setScore((prevState) => prevState + bonusLivesPts);
       console.log("bonusLivesPts", bonusLivesPts);
-      setLives(0);
+      setLives(0); */
     } else {
       alert("Too late...Lose 1 life");
       setKey((prevKey) => prevKey + 1);
@@ -59,7 +64,13 @@ const GameArea = () => {
         </div>
       );
     }
+
+    // This runs before onTimerEnd and then runs again when timer ends to first if above
     if ((lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) && gameIsLoaded) {
+      const bonusLivesPts = 50 * lives
+      setScore((prevState) => prevState + bonusLivesPts);
+      console.log("bonusLivesPts", bonusLivesPts);
+      setLives(0);
       return (
         <div>
           <p>
@@ -118,11 +129,7 @@ const GameArea = () => {
       setStreak((prevState) => prevState + 1);
       if (guessed.length < EMOJIS.length) {
         getNewAnswer();
-      }/* 
-      if (answerEmoji !== "") {
-        let timer1 = setTimeout(() => setAnswerEmoji(""), 1000);
-        return () => { clearTimeout(timer1) };
-      } */
+      }
 
       /***** GIVE BONUS POINTS FOR WINNING STREAKS *******/
       console.log("streak", streak);
@@ -137,6 +144,10 @@ const GameArea = () => {
         onTimerEnd();
       }
     }
+    /* if (answerEmoji !== "") {
+      let timer1 = setTimeout(() => setAnswerEmoji(""), 1000);
+      return () => { clearTimeout(timer1) };
+    } */
   }, [guessed, answerEmoji]);
 
   const checkAnswer = (event) => {
