@@ -21,10 +21,12 @@ const Hero = () => (
                 The best place to have FUN while testing your Spanish skills!
               </p>
 
-              <Link to="/gamepage">
-                <i className="fa fa-hand-o-right" />
-                Play
-              </Link>
+              <div className="buttons">
+                <Link to="/gamepage">
+                  <i className="fa fa-hand-o-right" />
+                  Play Now
+                </Link>
+              </div>
             </FadeTransform>
           </div>
         </div>

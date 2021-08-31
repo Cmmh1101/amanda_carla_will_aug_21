@@ -128,7 +128,7 @@ const GameArea = () => {
           <Button className="btn-block" onClick={RefreshPage}>
             Restart
           </Button>
-          <Button className="btn-block" onClick={ChangeLanguage}>
+          <Button className="btn-block mt-0" onClick={ChangeLanguage}>
             {`Change Language to ${
               language === "spanish" ? "English" : "Spanish"
             }`}
