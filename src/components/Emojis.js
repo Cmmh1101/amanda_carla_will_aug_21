@@ -7,8 +7,9 @@ function Emojis() {
       <div className="container">
         <div className="row">
           <div className="col play_title">
-            <h1>Let's Play!</h1>
+            <h1>Let's Play! / ¡Vamos a jugar!</h1>
             <p>Click the picture that matches the word</p>
+            <p>Haga clic en la imagen que coincide con la palabra</p>
             <GameArea />
           </div>
         </div>

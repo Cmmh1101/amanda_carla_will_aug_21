@@ -5,7 +5,6 @@ import {
   CardImg,
   CardTitle,
   CardText,
-  CardDeck,
   CardSubtitle,
   CardBody,
 } from "reactstrap";
@@ -42,7 +41,7 @@ const Team = () => {
                 <div className="icons">
                   <Link
                     to={{
-                      pathname: "https://www.linkedin.com/in/carla-montano",
+                        pathname: "https://www.linkedin.com/in/amanda-shuman/",
                     }}
                     target="_blank"
                     className="nav-link m-2"
@@ -50,7 +49,7 @@ const Team = () => {
                     <i className="fa fa-linkedin-square" aria-hidden="true" />
                   </Link>
                   <Link
-                    to={{ pathname: "https://github.com/cmmh1101" }}
+                      to={{ pathname: "https://github.com/AmandaShuman" }}
                     target="_blank"
                     className="nav-link m-2"
                   >
