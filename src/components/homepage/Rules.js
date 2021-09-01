@@ -13,7 +13,7 @@ const Rules = () => {
               transformProps={{
                 exitTransform: "scale(0.5) translateY(-300%)",
               }}
-              delay="4500"
+              delay="2500"
               className="col-lg-10 mx-auto"
             >
               <h2>
