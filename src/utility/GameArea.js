@@ -213,12 +213,13 @@ const GameArea = () => {
       <div className="col-md-8 game-area">
         <div className="play_restart_btns">
           <Button className="btn-block" onClick={CheckLoaded}>
-            {language === "spanish" ? "¡Juega Ahora!" : "Play Now"}
+            ¡Juega Ahora! / Play Now
+            {/* {language === "spanish" ? "¡Juega Ahora!" : "Play Now"} */}
           </Button>
           <Button className="btn-block mt-0" onClick={ChangeLanguage}>
             {language === "spanish"
-              ? `Cambiar Idioma a Inglés.`
-              : `Change Language to Spanish`}
+              ? `Cambiar Idioma a Inglés & reiniciar`
+              : `Change Language to Spanish & restart`}
           </Button>
         </div>
         <div className="board">
