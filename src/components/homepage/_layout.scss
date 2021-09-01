@@ -8,7 +8,7 @@
   .about {
     text-align: center;
     z-index: 5;
-    margin: 4rem 0;
+    margin: 4rem 0;  
   }
   .kitchen_bg {
     position: absolute;
@@ -46,7 +46,7 @@
 }
 
 .rules_section {
-  width: 100%;
+  width:100%;
   height: auto;
   min-height: 100vh;
   background-color: $dark_color;
@@ -55,23 +55,23 @@
   align-items: center;
   z-index: 0;
   color: $light_color;
-  .rules_container {
-    margin: 4rem 0;
-    .rule_icon {
-      margin-right: 5px;
+    .rules_container {
+      margin: 4rem 0;
+      .rule_icon {
+        margin-right: 5px;
+      }
     }
-  }
 }
 
 .team_section {
-  width: 100%;
+  width:100%;
   height: auto;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: wrap;
-
+  
   z-index: 0;
   .team_container {
     padding: 120px 0 80px 0;
@@ -84,8 +84,8 @@
     margin: 0 30px;
     display: flex;
     justify-content: center;
-    width: 300px;
-    .card-image {
+    width: 250px;
+    .card-image{
       display: flex;
       justify-content: center;
       width: 100%;
@@ -93,24 +93,26 @@
     .member-card {
       text-align: center;
       display: flex;
-      justify-content: center;
-      flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+      
     }
-    .icons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      a {
-        i {
-          font-size: 4rem;
-          transition: all 0.3s ease-in-out;
-          color: $light_blue_color;
-          &:hover {
-            transform: scale(1.1);
-            color: $dark_color;
-          }
-        }
+    .icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      i{
+        font-size: 4rem;
+  transition: all 0.3s ease-in-out;
+  color: $light_blue_color;
+  &:hover{
+    transform: scale(1.1);
+  color: $dark_color;
+  }
       }
     }
   }
+  }
+  
 }

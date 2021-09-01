@@ -11,6 +11,7 @@ import GamePage from "./pages/gamepage/GamePage";
 import Footer from "./components/footer/Footer";
 import Team from "./components/homepage/Team";
 import "./App.scss";
+import Features from "./components/homepage/Features";
 import Rules from "./components/homepage/Rules";
 
 class App extends Component {
