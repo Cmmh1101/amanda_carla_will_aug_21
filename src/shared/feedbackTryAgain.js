@@ -13,58 +13,50 @@ export const FEEDBACKTRYAGAIN = [
     },
     {
         id: 4,
-        feedback: "",
+        feedback: "try, try again",
     },
     {
         id: 5,
-        feedback: "",
+        feedback: "Incorrect",
     },
     {
         id: 6,
-        feedback: "",
+        feedback: "Not correct",
     },
     {
         id: 7,
-        feedback: "",
+        feedback: "Whoops",
     },
     {
         id: 8,
-        feedback: "",
+        feedback: "Wrong answer",
     },
     {
         id: 9,
-        feedback: "",
+        feedback: "Choose again",
     },
     {
         id: 10,
-        feedback: "",
+        feedback: "uh-oh",
     },
     {
         id: 11,
-        feedback: "",
+        feedback: "sorry",
     },
     {
         id: 12,
-        feedback: "",
+        feedback: "no",
     },
     {
         id: 13,
-        feedback: "",
+        feedback: "pick another",
     },
     {
         id: 14,
-        feedback: "",
+        feedback: "Not a match",
     },
     {
         id: 15,
-        feedback: "",
-    },
-    {
-        id: 16,
-        feedback: "",
-    },
-    {
-        id: 17,
-        feedback: "",
+        feedback: "Doesn't match",
     },
 ];

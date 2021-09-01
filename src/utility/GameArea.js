@@ -7,6 +7,7 @@ import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
 import { FEEDBACK } from "../shared/feedback";
+import { FEEDBACKTRYAGAIN } from "../shared/feedbackTryAgain";
 
 var timerId = null;
 const GameArea = () => {
@@ -67,7 +68,6 @@ const GameArea = () => {
       );
     }
 
-    // This runs before onTimerEnd and then runs again when timer ends to first if above
     if (
       (lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) &&
       gameIsLoaded
@@ -180,7 +180,9 @@ const GameArea = () => {
   const checkAnswer = (event) => {
     const goodFeedback = Math.floor(Math.random() * FEEDBACK.length);
     const positiveFeedback = FEEDBACK[goodFeedback].feedback;
-    console.log("feedback one", goodFeedback);
+    const badFeedback = Math.floor(Math.random() * FEEDBACKTRYAGAIN.length);
+    const negativeFeedback = FEEDBACKTRYAGAIN[badFeedback].feedback;
+    //console.log("feedback one", goodFeedback);
     const clickedEmoji = event.target.innerText;
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
@@ -197,7 +199,7 @@ const GameArea = () => {
       setLives((prevState) => prevState - 1);
       setStreak(0);
       if (lives >= 1) {
-        setAnswerEmoji("❌ Try again");
+        setAnswerEmoji(`❌  ${negativeFeedback}`);
       } else {
         alert("Game Over. Press 'Restart' to play again.");
       }
