@@ -158,6 +158,7 @@ const GameArea = () => {
         onTimerEnd();
       }
     }
+    // eslint-disable-next-line
   }, [guessed]);
 
   useEffect(() => {
