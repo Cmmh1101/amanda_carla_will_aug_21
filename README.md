@@ -29,7 +29,7 @@
 
 ## Check out our live project at:
 
--
+- https://the-jar-game.netlify.app/homepage
 
 ### We want you to have a great experience playing our jar game. Should you have any feedback feel free to contact us.
 
