@@ -61,7 +61,7 @@ const GameArea = () => {
         <div className="timer">
           <p>
             <strong>
-              {language === "spanish" ? "Presione Jugar" : "Press Play"}
+              {language === "spanish" ? "Presione Jugar encima" : "Press Play Now above"}
             </strong>
           </p>
         </div>
@@ -81,8 +81,8 @@ const GameArea = () => {
         <div>
           <p>
             {language === "spanish"
-              ? "Juego Terminado. Para volver a jugar, Presione Jugar!"
-              : `Game Over. Press Play to play again!`}
+              ? "Juego Terminado. Para volver a jugar, Presione Juega Ahora!"
+              : `Game Over. Press Play Now to play again!`}
           </p>
         </div>
       );
@@ -138,7 +138,6 @@ const GameArea = () => {
       );
       // console.log("guessed.length inside CheckAns:", guessed.length);
       setRemainingWords((prevState) => prevState - 1);
-      setStreak((prevState) => prevState + 1);
 
       if (guessed.length < EMOJIS.length) {
         getNewAnswer();
@@ -166,7 +165,7 @@ const GameArea = () => {
       timerId = setTimeout(() => {
         timerId = null;
         setAnswerEmoji("");
-      }, 500);
+      }, 1000);
       return () => {
         clearTimeout(timerId);
       };
@@ -192,10 +191,11 @@ const GameArea = () => {
       setScore((prevState) => prevState + 20);
       console.log("guessed array before", guessed);
       setGuessed((prevState) => [...prevState, random]);
+      setStreak((prevState) => prevState + 1);
       setAnswerEmoji(`✅  ${positiveFeedback}`);
     } else {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
-      setKey((prevKey) => prevKey + 1);
+      // setKey((prevKey) => prevKey + 1);
       setLives((prevState) => prevState - 1);
       setStreak(0);
       if (lives >= 1) {
@@ -218,8 +218,8 @@ const GameArea = () => {
           </Button>
           <Button className="btn-block mt-0" onClick={ChangeLanguage}>
             {language === "spanish"
-              ? `Cambiar Idioma a Inglés & reiniciar`
-              : `Change Language to Spanish & restart`}
+              ? `Change Language to English & restart`
+              : `Cambiar Idioma a Español & reiniciar`}
           </Button>
         </div>
         <div className="board">
@@ -265,7 +265,7 @@ const GameArea = () => {
           </div> */}
         </div>
         <div className="answer_options">
-          <h3>{language === "spanish" ? "Los Opciones" : "The Options"}</h3>
+          <h3>{language === "spanish" ? "Los Opciones" : "Options"}</h3>
           <GenerateAnswers
             lives={lives}
             words={remainingWords}
