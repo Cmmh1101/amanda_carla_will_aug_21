@@ -7,8 +7,7 @@ import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
 
-
-var timerId = null
+var timerId = null;
 const GameArea = () => {
   const [random, setRandom] = useState(
     Math.floor(Math.random() * EMOJIS.length)
@@ -68,8 +67,11 @@ const GameArea = () => {
     }
 
     // This runs before onTimerEnd and then runs again when timer ends to first if above
-    if ((lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) && gameIsLoaded) {
-      const bonusLivesPts = 50 * lives
+    if (
+      (lives < 1 || guessed.length === EMOJIS.length || remainingWords < 1) &&
+      gameIsLoaded
+    ) {
+      const bonusLivesPts = 50 * lives;
       setScore((prevState) => prevState + bonusLivesPts);
       console.log("bonusLivesPts", bonusLivesPts);
       // alert("Press ok to add life bonus to score") - infinite loop?
@@ -126,12 +128,17 @@ const GameArea = () => {
   /****** CHECK IF PICTURE CLICKED MATCHES WORD ON SCREEN *******/
   useEffect(() => {
     if (gameIsLoaded) {
-
-      console.log("guessed array", guessed,EMOJIS.length,"get new answer?",guessed.length < EMOJIS.length);
+      console.log(
+        "guessed array",
+        guessed,
+        EMOJIS.length,
+        "get new answer?",
+        guessed.length < EMOJIS.length
+      );
       // console.log("guessed.length inside CheckAns:", guessed.length);
       setRemainingWords((prevState) => prevState - 1);
       setStreak((prevState) => prevState + 1);
-      
+
       if (guessed.length < EMOJIS.length) {
         getNewAnswer();
       }
@@ -149,24 +156,24 @@ const GameArea = () => {
         alert("Congrats, you've won! 🏆 \nClick ok to add life bonus");
         onTimerEnd();
       }
-      
     }
-    
   }, [guessed]);
 
   useEffect(() => {
     if (answerEmoji !== "" && !timerId) {
       timerId = setTimeout(() => {
-        timerId = null
-        setAnswerEmoji("")
+        timerId = null;
+        setAnswerEmoji("");
       }, 500);
-      return () => { clearTimeout(timerId) };
+      return () => {
+        clearTimeout(timerId);
+      };
     }
   }, [answerEmoji]);
 
-  useEffect(()=>{
-    console.log("State vars", guessed,answerEmoji,timerId)
-  })
+  useEffect(() => {
+    console.log("State vars", guessed, answerEmoji, timerId);
+  });
 
   const checkAnswer = (event) => {
     const clickedEmoji = event.target.innerText;
@@ -209,7 +216,7 @@ const GameArea = () => {
         </div>
         <div className="board">
           <div className="col-4 board_item">
-            <h6>{language === "spanish" ? "Puntas" : "Points"}</h6>
+            <h6>{language === "spanish" ? "Puntos" : "Points"}</h6>
             <hr />
             <span>{score}</span>
           </div>
