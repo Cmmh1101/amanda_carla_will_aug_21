@@ -16,7 +16,7 @@ const Hero = () => (
               }}
               delay="1000"
             >
-              <h1>Welcome to The Jar Game</h1>
+              <h1>Welcome to The Jar Game<br/>Preservar</h1>
               <p>
                 The best place to have FUN while testing your Spanish (or English) skills!
               </p>
