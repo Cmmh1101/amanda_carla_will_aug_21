@@ -166,7 +166,7 @@ const GameArea = () => {
       timerId = setTimeout(() => {
         timerId = null;
         setAnswerEmoji("");
-      }, 500);
+      }, 700);
       return () => {
         clearTimeout(timerId);
       };
