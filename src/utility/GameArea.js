@@ -243,7 +243,7 @@ const GameArea = () => {
                 key={key}
                 isPlaying={lives > 0}
                 size={250}
-                duration={5}
+                duration={20}
                 colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
                 onComplete={() => onTimerEnd()}
                 className="circle_timer"
