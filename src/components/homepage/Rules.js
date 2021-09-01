@@ -13,7 +13,7 @@ const Rules = () => {
               transformProps={{
                 exitTransform: "scale(0.5) translateY(-300%)",
               }}
-              delay="4500"
+              delay="1000"
               className="col-lg-10 mx-auto"
             >
               <h2>
@@ -28,16 +28,20 @@ const Rules = () => {
                   </p>
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    If you'd prefer, you could instead choose to brush up on your English vocabulary with English words.
+                    If you'd prefer, you could instead choose to brush up on
+                    your English vocabulary with English words.
                   </p>
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    Be careful, though! If the timer runs out, you've broken a jar and will lose a life! Once you've "broken" 5 jars, it's game over.
+                    Be careful, though! If the timer runs out, you've broken a
+                    jar and will lose a life! Once you've "broken" 5 jars, it's
+                    game over.
                   </p>
                   <br />
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                      Save multiple jars in a row or have extra lives at the end of the game for bonus points.
+                    Save multiple jars in a row or have extra lives at the end
+                    of the game for bonus points.
                   </p>
                 </div>
                 <div className=" col-12 col-md-6">
@@ -47,15 +51,19 @@ const Rules = () => {
                   </p>
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    Si lo prefiere, puede optar por repasar su vocabulario en inglés con palabras en inglés.
+                    Si lo prefiere, puede optar por repasar su vocabulario en
+                    inglés con palabras en inglés.
                   </p>
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    ¡Pero ten cuidado! Si se acaba el tiempo, ¡has roto un frasco y perderás una vida! Una vez que hayas "roto" 5 frascos, se acabó el juego.
+                    ¡Pero ten cuidado! Si se acaba el tiempo, ¡has roto un
+                    frasco y perderás una vida! Una vez que hayas "roto" 5
+                    frascos, se acabó el juego.
                   </p>
                   <p>
                     <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    Guarde varios frascos seguidos o tenga vidas extra al final del juego para obtener puntos de bonificación.
+                    Guarde varios frascos seguidos o tenga vidas extra al final
+                    del juego para obtener puntos de bonificación.
                   </p>
                 </div>
               </div>

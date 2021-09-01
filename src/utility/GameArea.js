@@ -6,6 +6,7 @@ import { EMOJIS } from "../shared/emojis";
 import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
+import { FEEDBACK } from "../shared/feedback";
 
 var timerId = null;
 const GameArea = () => {
@@ -16,7 +17,7 @@ const GameArea = () => {
   const [score, setScore] = useState(0);
   const [remainingWords, setRemainingWords] = useState(EMOJIS.length);
   const [lives, setLives] = useState(0);
-  const [streak, setStreak] = useState(1);
+  const [streak, setStreak] = useState(0);
   const [language, setLanguage] = useState("spanish");
   const [key, setKey] = useState(0);
   const [gameIsLoaded, setGameIsLoaded] = useState(false);
@@ -30,7 +31,7 @@ const GameArea = () => {
       setScore(0);
       setRemainingWords(EMOJIS.length);
       setGuessed([]);
-      setStreak(1);
+      setStreak(0);
       setKey(0);
     } else {
       RefreshPage();
@@ -49,7 +50,7 @@ const GameArea = () => {
       setKey((prevKey) => prevKey + 1);
       getNewAnswer();
       setLives((prevLives) => prevLives - 1);
-      setStreak(1);
+      setStreak(0);
     }
   };
   /********** TIMER IN GAME COMPONENT **************/
@@ -108,7 +109,7 @@ const GameArea = () => {
     setScore(0);
     setLives(0);
     setRemainingWords(EMOJIS.length);
-    setStreak(1);
+    setStreak(0);
     setKey((prevKey) => prevKey + 1);
     setGameIsLoaded(false);
   };
@@ -176,6 +177,9 @@ const GameArea = () => {
   });
 
   const checkAnswer = (event) => {
+    const goodFeedback = Math.floor(Math.random() * FEEDBACK.length);
+    const positiveFeedback = FEEDBACK[goodFeedback].feedback;
+    console.log("feedback one", goodFeedback);
     const clickedEmoji = event.target.innerText;
     const correctEmoji = EMOJIS[random].emoji;
     console.log(clickedEmoji, correctEmoji);
@@ -185,12 +189,12 @@ const GameArea = () => {
       setScore((prevState) => prevState + 20);
       console.log("guessed array before", guessed);
       setGuessed((prevState) => [...prevState, random]);
-      setAnswerEmoji("✅ Great Job!");
+      setAnswerEmoji(`✅  ${positiveFeedback}`);
     } else {
       /****IF USER GUESSES WRONG - LOSE LIFE & RESTART STREAK ****/
       setKey((prevKey) => prevKey + 1);
       setLives((prevState) => prevState - 1);
-      setStreak(1);
+      setStreak(0);
       if (lives >= 1) {
         setAnswerEmoji("❌ Try again");
       } else {
