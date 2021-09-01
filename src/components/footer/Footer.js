@@ -9,8 +9,8 @@ const Footer = () => {
           <div className="row">
             <div className="col-12 footer_btns">
               <div className="buttons">
-                <Link to="/gamepage">Play Now</Link>
-                <Link to="/">See Demo</Link>
+                <Link to="/gamepage">Game Page</Link>
+                <Link to="/">Demo</Link>
               </div>
             </div>
             <div className="col footer_text">
