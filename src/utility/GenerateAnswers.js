@@ -44,6 +44,7 @@ export const GenerateAnswers = (props) => {
 
   useEffect(() => {
     console.log("current Answers", answers, props.random)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [answers])
 
 
