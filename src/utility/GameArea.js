@@ -7,6 +7,8 @@ import { GenerateAnswers } from "./GenerateAnswers";
 import { Streak } from "./Streak";
 import { RefreshPage } from "./RefreshPage";
 
+
+var timerId = null
 const GameArea = () => {
   const [random, setRandom] = useState(
     Math.floor(Math.random() * EMOJIS.length)
@@ -70,6 +72,7 @@ const GameArea = () => {
       const bonusLivesPts = 50 * lives
       setScore((prevState) => prevState + bonusLivesPts);
       console.log("bonusLivesPts", bonusLivesPts);
+      // alert("Press ok to add life bonus to score") - infinite loop?
       setLives(0);
       return (
         <div>
@@ -123,10 +126,12 @@ const GameArea = () => {
   /****** CHECK IF PICTURE CLICKED MATCHES WORD ON SCREEN *******/
   useEffect(() => {
     if (gameIsLoaded) {
-      // console.log("guessed array", guessed);
+
+      console.log("guessed array", guessed,EMOJIS.length,"get new answer?",guessed.length < EMOJIS.length);
       // console.log("guessed.length inside CheckAns:", guessed.length);
       setRemainingWords((prevState) => prevState - 1);
       setStreak((prevState) => prevState + 1);
+      
       if (guessed.length < EMOJIS.length) {
         getNewAnswer();
       }
@@ -139,16 +144,29 @@ const GameArea = () => {
         console.log("Streak score", streakPoints);
       }
       /****** END GAME IF USER RUNS OUT OF WORDS ******/
+      //not currently running???
       if (guessed.length === EMOJIS.length) {
-        setAnswerEmoji("Congrats, you've won! 🏆")
+        alert("Congrats, you've won! 🏆 \nClick ok to add life bonus");
         onTimerEnd();
       }
+      
     }
-    /* if (answerEmoji !== "") {
-      let timer1 = setTimeout(() => setAnswerEmoji(""), 1000);
-      return () => { clearTimeout(timer1) };
-    } */
-  }, [guessed, answerEmoji]);
+    
+  }, [guessed]);
+
+  useEffect(() => {
+    if (answerEmoji !== "" && !timerId) {
+      timerId = setTimeout(() => {
+        timerId = null
+        setAnswerEmoji("")
+      }, 500);
+      return () => { clearTimeout(timerId) };
+    }
+  }, [answerEmoji]);
+
+  useEffect(()=>{
+    console.log("State vars", guessed,answerEmoji,timerId)
+  })
 
   const checkAnswer = (event) => {
     const clickedEmoji = event.target.innerText;
