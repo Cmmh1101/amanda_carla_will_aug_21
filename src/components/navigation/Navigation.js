@@ -17,7 +17,7 @@ const Navigation = () => {
     <Navbar className="nav" expand="md" dark>
       <div className="container p-0">
         <NavbarBrand href="/" className="logo-container">
-          <h1>The Jar Game</h1>
+          <h1>Preservar/Jar Game</h1>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
