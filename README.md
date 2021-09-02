@@ -31,6 +31,10 @@
 
 - https://the-jar-game.netlify.app/homepage
 
+## Demo of our game with audio:
+
+ - https://youtu.be/Kux3FZZG-JE
+
 ### We want you to have a great experience playing our jar game. Should you have any feedback feel free to contact us.
 
 ## Matching game involving Spanish vocabulary
