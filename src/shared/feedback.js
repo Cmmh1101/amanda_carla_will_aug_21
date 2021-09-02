@@ -21,7 +21,7 @@ export const FEEDBACK = [
   },
   {
     id: 6,
-    feedback: "I'm very proud of you!",
+    feedback: "I'm proud of you!",
   },
   {
     id: 7,
