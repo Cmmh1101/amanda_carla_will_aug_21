@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
+import YoutubeEmbed from "../YoutubeEmbed";
 
 const Features = () => {
   return (
@@ -31,7 +32,11 @@ const Features = () => {
             </p>
             <div className="buttons">
               <Link to="/gamepage">Play Now</Link>
-              <Link to="/">See Demo</Link>
+            </div>
+            <br />
+            <div className="App">
+              <h1>Demo</h1>
+              <YoutubeEmbed embedId="1uXCEuEibkI" />
             </div>
           </FadeTransform>
         </div>
