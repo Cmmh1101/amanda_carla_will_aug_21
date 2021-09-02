@@ -151,8 +151,8 @@ export const EMOJIS = [
   },
   {
     id: 26,
-    english: "Meat",
-    spanish: "La Carne",
+    english: "Steak",
+    spanish: "El filete",
     emoji: "🥩",
   },
   {
