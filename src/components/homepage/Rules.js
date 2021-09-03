@@ -8,62 +8,33 @@ const Rules = () => {
       <section className="rules_section">
         <div className="container rules_container">
           <div className="row">
-            <FadeTransform
-              in
-              transformProps={{
-                exitTransform: "scale(0.5) translateY(-300%)",
-              }}
-              delay="1000"
-              className="col-lg-10 mx-auto"
-            >
+            <div className="col-lg-10 mx-auto">
               <h2>
-                <i class="fa fa-beer" aria-hidden="true" />
-                Game Rules
+                Game <span className="strong_word">Rules</span>
               </h2>
-              <div className="col-12 d-flex flex-wrap">
-                <div className="col-12 col-md-6">
+              <hr />
+              <div className="col-12 rules_area">
+                <div className="col-12 col-md-6 pr-lg-4">
+                  <p>It's time to brush up on your Spanish vocabulary.</p>
                   <p>
-                    <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    It's time to brush up on your Spanish vocabulary.
-                  </p>
-                  <p>
-                    <i class="fa fa-beer rule_icon" aria-hidden="true" />
                     If you'd prefer, you could instead choose to brush up on
-                    your English vocabulary with English words.
+                    your English vocabulary.
                   </p>
                   <p>
-                    <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    Be careful, though! If the timer runs out, you've broken a
-                    jar and will lose a life! Once you've "broken" 5 jars, it's
-                    game over.
+                    Be careful, though! If the timer runs out, you will lose a
+                    life! Once you've lost 5 lives, it's game over.
                   </p>
                   <br />
-                  <p>
-                    <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    Save multiple jars in a row or have extra lives at the end
-                    of the game for bonus points.
-                  </p>
                 </div>
-                <div className=" col-12 col-md-6">
+                <div className=" col-12 col-md-6 pl-lg-4">
+                  <p>¡Es hora de repasar tu vocabulario en español!</p>
                   <p>
-                    <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    ¡Es hora de repasar tu vocabulario en español!
-                  </p>
-                  <p>
-                    <i class="fa fa-beer rule_icon" aria-hidden="true" />
                     Si lo prefiere, puede optar por repasar su vocabulario en
-                    inglés con palabras en inglés.
+                    inglés.
                   </p>
                   <p>
-                    <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    ¡Pero ten cuidado! Si se acaba el tiempo, ¡has roto un
-                    frasco y perderás una vida! Una vez que hayas "roto" 5
-                    frascos, se acabó el juego.
-                  </p>
-                  <p>
-                    <i class="fa fa-beer rule_icon" aria-hidden="true" />
-                    Guarde varios frascos seguidos o tenga vidas extra al final
-                    del juego para obtener puntos de bonificación.
+                    ¡Ten cuidado! Si se acaba el tiempo, ¡perderás una vida! Una
+                    vez que pierdas 5 vidas, se acaba el juego.
                   </p>
                 </div>
               </div>
@@ -71,7 +42,7 @@ const Rules = () => {
               <div className="buttons">
                 <Link to="/gamepage">Play Now</Link>
               </div>
-            </FadeTransform>
+            </div>
           </div>
         </div>
       </section>

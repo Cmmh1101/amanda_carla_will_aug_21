@@ -5,43 +5,17 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: auto;
+  min-height: 100vh;
   .about {
     text-align: center;
     z-index: 5;
     margin: 4rem 0;
-  }
-  .kitchen_bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    img {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
+    .app_demo {
+      h3 {
+        margin: 2rem 0;
+      }
     }
-    .overlay {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      background-color: #ffffffef;
-      z-index: 2;
-    }
-  }
-  .rounded_bg {
-    width: 100%;
-    height: 50vh;
-    transform: scale(2);
-    border-radius: 0 0 50% 50%;
-    background-color: #ffffff;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 0;
   }
 }
 
@@ -57,8 +31,12 @@
   color: $light_color;
   .rules_container {
     margin: 4rem 0;
-    .rule_icon {
-      margin-right: 5px;
+    h2 {
+      margin-bottom: 4rem;
+    }
+    .rules_area {
+      display: flex;
+      flex-flow: wrap;
     }
   }
 }
@@ -77,6 +55,7 @@
     padding: 120px 0 80px 0;
     h2 {
       margin-bottom: 5rem;
+      
     }
   }
   .cards {
@@ -85,10 +64,22 @@
     display: flex;
     justify-content: center;
     width: 300px;
+   
+    
     .card-image {
       display: flex;
       justify-content: center;
       width: 100%;
+      border: 15px solid $dark_color;
+      
+     
+      border-radius: 50%;
+      
+      .border-gradient-purple {
+  
+}
+      
+      
     }
     .member-card {
       text-align: center;

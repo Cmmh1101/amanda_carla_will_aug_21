@@ -1,6 +1,6 @@
 import React from "react";
 import Features from "./Features";
-import KitchenBg from "./KitchenBg";
+
 import Rules from "./Rules";
 import Team from "./Team";
 
@@ -9,12 +9,9 @@ const Layout = () => {
     <>
       <section className="layout_section">
         <Features />
-        <KitchenBg />
       </section>
-        <Rules />
-        <Team />
-        
-      
+      <Rules />
+      <Team />
     </>
   );
 };

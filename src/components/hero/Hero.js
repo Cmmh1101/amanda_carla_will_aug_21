@@ -16,9 +16,14 @@ const Hero = () => (
               }}
               delay="1000"
             >
-              <h1>Welcome to The Jar Game<br/>Preservar</h1>
+              <h1>
+                Welcome to The Jar Game
+                <br />
+                Preservar
+              </h1>
               <p>
-                The best place to have FUN while testing your Spanish (or English) skills!
+                The best place to have FUN while testing your Spanish (or
+                English) skills!
               </p>
 
               <div className="buttons">
@@ -27,28 +32,36 @@ const Hero = () => (
                   Play Now
                 </Link>
               </div>
-              <p>Keep jars from breaking!!</p><br/><br/>
             </FadeTransform>
           </div>
         </div>
       </div>
-      <div className="hero_bg"></div>
-      <FadeTransform
+      {/* <div className="hero_bg">
+        <img src="../images/languagetarget.jpg" width="100%" alt="" />
+      </div> */}
+      {/* <FadeTransform
         in
         transformProps={{
           exitTransform: "scale(0.5) translateY(-300%)",
         }}
-        delay="1500" className="jar_bg">
+        delay="1500"
+        className="jar_bg"
+      >
         <img src="../images/glassjar.png" alt="" />
-      </FadeTransform>
-      <FadeTransform
+      </FadeTransform> */}
+      {/* <FadeTransform
         in
         transformProps={{
           exitTransform: "scale(0.5) translateY(-300%)",
         }}
-        delay="2000" className="broken_jar_bg">
-        <img src="../images/brokenjar.png" alt="" />
-      </FadeTransform>
+        delay="2000"
+        className="broken_jar_bg"
+      >
+        <img src="../images/languagetarget.jpg" alt="" />
+      </FadeTransform> */}
+      <div className="jumbo_bg">
+        <img src="../images/thumbsupflag.jpg" width="100%" alt="" />
+      </div>
     </Jumbotron>
   </>
 );

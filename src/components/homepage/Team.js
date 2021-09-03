@@ -15,11 +15,12 @@ const Team = () => {
     <>
       <section className="team_section">
         <div className="col-10 mx-auto team_container" id="team">
+        
           <h2>
-            <i class="fa fa-beer" aria-hidden="true" />
-            Meet Our Dev Team
+            Meet Our Dev <span className="strong_word">Team</span>
+            
           </h2>
-
+<hr />
           <div className="col-12 team_cards">
             <Fade in className="col-12 d-flex justify-content-center flex-wrap">
               <Card className="cards">
@@ -30,7 +31,7 @@ const Team = () => {
                   alt="Amanda Shuman"
                 />
                 <CardBody className="member-card">
-                  <CardTitle tag="h4">Amanda Shuman</CardTitle>
+                  <CardTitle tag="h4">Amanda <span className="strong_word">Shuman</span></CardTitle>
                   <CardSubtitle tag="h5" className="mb-2 text-muted">
                     <strong>Full-Stack &amp; Python Developer</strong>
                   </CardSubtitle>
@@ -68,7 +69,7 @@ const Team = () => {
                   alt="Carla Montano"
                 />
                 <CardBody className="member-card">
-                  <CardTitle tag="h3">Carla Montano</CardTitle>
+                  <CardTitle tag="h3">Carla <span className="strong_word">Montano</span></CardTitle>
                   <CardSubtitle tag="h5" className="mb-2 text-muted">
                     <strong>Front-end Web &amp; Mobile Developer</strong>
                   </CardSubtitle>
@@ -99,12 +100,12 @@ const Team = () => {
               <Card className="cards">
                 <CardImg
                   top
-                  className="card-image"
+                  className="card-image border-gradient-purple"
                   src="/images/willpcircle.png"
                   alt="Will Prouty"
                 />
                 <CardBody className="member-card">
-                  <CardTitle tag="h3">Will Prouty</CardTitle>
+                  <CardTitle tag="h3">Will <span className="strong_word">Prouty</span></CardTitle>
                   <CardSubtitle tag="h5" className="mb-2 text-muted">
                     <strong>Front-end Web &amp; Mobile Developer</strong>
                   </CardSubtitle>

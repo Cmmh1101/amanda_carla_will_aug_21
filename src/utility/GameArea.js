@@ -218,7 +218,7 @@ const GameArea = () => {
             ¡Juega Ahora! / Play Now
             {/* {language === "spanish" ? "¡Juega Ahora!" : "Play Now"} */}
           </Button>
-          <Button className="btn-block mt-0" onClick={ChangeLanguage}>
+          <Button className="btn-block mt-1 bg-dark" onClick={ChangeLanguage}>
             {language === "spanish"
               ? `Change Language to English & restart`
               : `Cambiar Idioma a Español & reiniciar`}

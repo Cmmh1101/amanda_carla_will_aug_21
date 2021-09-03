@@ -1,26 +1,38 @@
 .hero {
   padding: 0;
-  color: $light_color;
+  color: $dark_color;
   background-color: transparent;
   width: 100%;
-  height: 90vh;
+  height: 95vh;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-
-  .hero_bg {
-    width: 100%;
-    height: 60vh;
-    transform: scale(2);
-    border-radius: 0 0 50% 50%;
-    background-color: $dark_color;
+  border-radius: 0;
+  .jumbo_bg {
     position: absolute;
     top: 0;
-    bottom: 0;
-    z-index: 1;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      opacity: 0.3;
+    }
   }
+  // .hero_bg {
+  //   width: 100%;
+  //   height: 100vh;
+  //   // transform: scale(2);
+  //   border-radius: 0 0 50% 50%;
+  //   background-color: $dark_color;
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+  //   z-index: 1;
+  // }
   .hero-text {
     text-align: center;
     padding: 40px;
