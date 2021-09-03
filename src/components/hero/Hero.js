@@ -5,7 +5,7 @@ import { FadeTransform } from "react-animation-components";
 
 const Hero = () => (
   <>
-    <Jumbotron className="jumbo-fluid hero m-0 mt-4">
+    <Jumbotron className="jumbo-fluid hero m-0">
       <div className="container">
         <div className="row">
           <div className="col-lg-10 mx-auto hero-text">
